@@ -1,0 +1,25 @@
+* {
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+nav {
+    display:inline-block;
+
+}
+
+a:hover {
+    background-color: snow;
+}
+
+.navButton {
+    font-size:x-large;
+    color:lightSkyBlue;
+    padding:8px 16px;
+    background-color: lightcoral;
+    width:auto;
+    border:none;
+    display:inline-block;
+    text-decoration: none;
+    
+    cursor:pointer;
+}
