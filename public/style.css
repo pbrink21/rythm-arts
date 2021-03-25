@@ -1,17 +1,20 @@
+.divborder{
+    border: 3px solid #73AD21;
+}
+
 * {
     font-family: 'Trebuchet MS', sans-serif;
 }
 
 nav {
     display:inline-block;
-
 }
 
 a:hover {
     background-color: snow;
 }
 
-.navButton {
+.navButton {    
     font-size:x-large;
     color:lightSkyBlue;
     padding:8px 16px;
@@ -23,3 +26,35 @@ a:hover {
     
     cursor:pointer;
 }
+
+.title {
+    position:relative;
+    top: 30%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    text-align: center;    
+}
+
+.title:after{
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -15px;
+  right: -15px;
+  bottom: -20px;
+  border: red 2px solid;
+}
+
+.titleimg{
+    position:absolute;
+    top: 25%;
+    right: 50%;
+}
+
+.menubuttons{
+    position: absolute;
+    top: 43%;
+    right: -62%;
+}
+
