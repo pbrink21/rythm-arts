@@ -11,19 +11,52 @@ nav {
 }
 
 a:hover {
+    color:#000000;
     background-color: snow;
+}
+
+b:hover {
+    color:#000000;
+    background-color: green;
+}
+
+c:hover {
+    color:#000000;
+    background-color: yellow;
+}
+
+d:hover {
+    color:#000000;
+    background-color: red;
 }
 
 .navButton {    
     font-size:x-large;
-    color:lightSkyBlue;
+    color:white;
     padding:8px 16px;
-    background-color: lightcoral;
+    background-color: #ff66aa;
     width:auto;
     border:none;
     display:inline-block;
     text-decoration: none;
     
+    cursor:pointer;
+}
+
+.difButton {    
+    position:relative;
+    font-size:x-large;
+    color:#FFFFFF;   
+    background-color: #ff66aa;
+    text-align:center;
+    top: 50%;
+    left: 30%;
+    width:40%;   
+    border:none;
+    display:block;
+    padding:50px;
+    margin-bottom:50px;
+    text-decoration: none;
     cursor:pointer;
 }
 
