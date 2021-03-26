@@ -4,16 +4,57 @@
         <meta charset="UTF-8">
         <title>Board</title>
         <link rel="stylesheet" href="style.css">
-        
-    </head>
-    <body>       
-        <div id = "title">
-            <div id = "titleimg" class="titleimg">                   
 
-            </div>        
+    </head>
+    <body>
+        <div id = "title">
+            <div id = "titleimg" class="titleimg">
+
+            </div>
         </div>
-        <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
-        <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
-        <script src="bundle.js"></script>
+
+        <div id = "game">
+          <canvas id = "gameCanvas" width = "300" height = "150"/>
+
+          <script language="JavaScript">
+            var elem = document.getElementById('gameCanvas'),
+            context = elem.getContext('2d'),
+            elements = [];
+
+            function intersect(point, circle){
+              return Math.sqrt((point.x-circle.x) ** 2 + (point.y-circle.y) ** 2) < circle.radius;
+            }
+
+            elem.addEventListener('click', function(event) {
+              const pos = {
+                x: event.clientX,
+                y: event.clientY
+              };
+                  elements.forEach(function(element){
+                    if(intersect(pos, element)){
+                      alert('clicked correctly');
+                    }else{
+                      alert('clicked incorrectly');
+                    }
+                  });
+            }, false);
+
+            elements.push({
+              color: '#05EFFF',
+              radius: 20,
+              x: 40,
+              y: 40,
+              displayed: true
+            });
+
+            elements.forEach(function(element){
+              context.fillStyle = element.color;
+              context.beginPath();
+              context.arc(element.x, element.y, element.radius, 0, 2 * Math.PI);
+              context.fill();
+            });
+
+          </script>
+        </div>
     </body>
 </html>
