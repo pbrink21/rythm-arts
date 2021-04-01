@@ -14,45 +14,131 @@
         </div>
 
         <div id = "game">
-          <canvas id = "gameCanvas" width = "300" height = "150"/>
+          <canvas id = "gameCanvas" width = "300" height = "150" style="border:1px solid #000000;"/>
 
           <script language="JavaScript">
             var elem = document.getElementById('gameCanvas'),
             context = elem.getContext('2d'),
+            theme = "Dawn Winery",
+            size = 20,
+            acceleration = 20,
+            points = 0;
             elements = [];
+
+            const colors = {
+              "Dawn Winery":{
+                numColors: 4,
+                success: "#B0F54D",
+                background: "#FFFFFF",
+                0: "#603060",
+                1: "#a8b2ba",
+                2: "#ffe0c0",
+                3: "#338dd8"
+              },
+            };
+
+            const DIRECTION = {
+              0: {x: 0, y: -1, key: 'w', keyCode: 87, winX: elem.width/2, winY: 0},
+              1: {x: -1, y: 0, key: 'a', keyCode: 65, winX: 0, winY: elem.height/2},
+              2: {x: 0, y: 1, key: 's', keyCode: 83, winX: elem.width/2, winY: elem.height},
+              3: {x: 1, y: 0, key: 'd', keyCode: 68, winX: elem.width, winY: elem.height/2},
+              4: {x: 0, y: 0, key: 'q', keyCode: 81, winX: 0, winY: 0}
+            };
 
             function intersect(point, circle){
               return Math.sqrt((point.x-circle.x) ** 2 + (point.y-circle.y) ** 2) < circle.radius;
             }
 
-            elem.addEventListener('click', function(event) {
-              const pos = {
-                x: event.clientX,
-                y: event.clientY
-              };
-                  elements.forEach(function(element){
-                    if(intersect(pos, element)){
-                      alert('clicked correctly');
-                    }else{
-                      alert('clicked incorrectly');
-                    }
-                  });
-            }, false);
+            function generate(){
+              elements.push({
+                color: colors[theme][Math.floor(Math.random() * colors[theme].numColors)],
+                radius: size,
+                x: elem.width/2,
+                y: elem.height/2,
+                speed: acceleration,
+                ready: false,
+                clicked: false,
+                direction: DIRECTION[Math.floor(Math.random() * 4)],
+                previous: {
+                  x: elem.width/2,
+                  y: elem.height/2,
+                  radius: size,
+                }
+              });
+            }
 
-            elements.push({
-              color: '#05EFFF',
-              radius: 20,
-              x: 40,
-              y: 40,
-              displayed: true
-            });
-
-            elements.forEach(function(element){
-              context.fillStyle = element.color;
-              context.beginPath();
-              context.arc(element.x, element.y, element.radius, 0, 2 * Math.PI);
+            function start(){
+              generate();
+              context.fillStyle = colors[theme].background;
+              context.rect(0, 0, elem.width, elem.height);
               context.fill();
-            });
+              elements.forEach(function(element){
+                draw(element.x, element.y, element.radius, element.color);
+              });
+            }
+
+            function iterate(){
+              elements.forEach(function(element){
+                var pos = {
+                  x: element.direction.winX,
+                  y: element.direction.winY
+                };
+                //chagnes color, if neccesary
+                if(intersect(pos, element)){
+                  element.ready = true;
+                  element.color = colors[theme].success;
+                }
+                //stores data for previous circle
+                element.previous.x = element.x;
+                element.previous.y = element.y;
+                element.previous.radius = element.radius;
+                //moves circle forward
+                element.x = element.x + (element.direction.x * element.speed);
+                element.y = element.y + (element.direction.y * element.speed);
+                //erases old Circles
+                draw(element.previous.x, element.previous.y, element.previous.radius, colors[theme].background);
+                //prints new Circles
+                draw(element.x, element.y, element.radius, element.color);
+
+                if((!intersect(pos, element) && element.ready) || element.clicked){
+                  if(elements.clicked){
+                    points++;
+                  }
+                  elements.splice(elements.indexOf(element));
+                }
+              });
+            }
+
+            function draw(x, y, r, c){
+              context.fillStyle = c;
+              context.beginPath();
+              context.arc(x, y, r, 0, 2 * Math.PI);
+              context.fill();
+            }
+
+            function handleClick(clicked){
+              var goodClick = false;
+              elements.forEach(function(element){
+                if((element.direction.keyCode == clicked && element.ready && !element.clicked)){
+                  goodClick = true;
+                  element.clicked = true;
+                }
+              });
+              if(!goodClick){
+                points--;
+              }
+            }
+
+            context.font = "30px Arial";
+            context.fillText("Press space to start", 10, 50);
+
+            elem.addEventListener('keydown', function(event) {
+              if(event.keyCode == 32){
+                start();
+              }else{
+                handleClick(event.keyCode);
+              }
+            }, false);
 
           </script>
         </div>
