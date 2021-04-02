@@ -30,6 +30,12 @@ d:hover {
     background-color: red;
 }
 
+.mainbackground {
+	background-image: url('https://i.pinimg.com/originals/5a/64/63/5a6463e51b284bfcbc34869dc72cf0cd.gif');
+	background-size:100%;
+	background-repeat:repeat;  
+}
+
 .navButton {    
     font-size:x-large;
     color:white;
