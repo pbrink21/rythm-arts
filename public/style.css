@@ -30,8 +30,14 @@ d:hover {
     background-color: red;
 }
 
-.mainbackground {
+.setBackground {
 	background-image: url('https://i.pinimg.com/originals/5a/64/63/5a6463e51b284bfcbc34869dc72cf0cd.gif');
+	background-size:100%;
+	background-repeat:repeat;  
+}
+
+.levelBackground {
+	background-image: url('https://i.pinimg.com/originals/fa/dc/b2/fadcb24075acb650de29f258af69d830.gif');
 	background-size:100%;
 	background-repeat:repeat;  
 }
