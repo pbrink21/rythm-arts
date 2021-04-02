@@ -62,7 +62,7 @@
                 previous: {
                   x: elem.width/2,
                   y: elem.height/2,
-                  radius: size,
+                  radius: size + 5,
                 }
               });
             }
@@ -75,6 +75,18 @@
               elements.forEach(function(element){
                 draw(element.x, element.y, element.radius, element.color);
               });
+              var numCircles = 10;
+              var sn = setInterval(function(){
+                iterate();
+                if(elements.length == 0){
+                  generate();
+                  numCircles--;
+                }
+                if(numCircles <= 0){
+                  clearInterval(sn);
+                  alert("you have gotten " + points + " points");
+                }
+              }, 100);
             }
 
             function iterate(){
@@ -91,7 +103,7 @@
                 //stores data for previous circle
                 element.previous.x = element.x;
                 element.previous.y = element.y;
-                element.previous.radius = element.radius;
+                element.previous.radius = element.radius + 5;
                 //moves circle forward
                 element.x = element.x + (element.direction.x * element.speed);
                 element.y = element.y + (element.direction.y * element.speed);
