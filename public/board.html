@@ -14,14 +14,13 @@
         </div>
 
         <div id = "game">
-          <canvas id = "gameCanvas" width = "300" height = "150" style="border:1px solid #000000;"/>
+          <canvas id = "gameCanvas" width = "500" height = "500" style="border:1px solid #000000;"/>
 
           <script language="JavaScript">
             var elem = document.getElementById('gameCanvas'),
             context = elem.getContext('2d'),
             theme = "Dawn Winery",
-            size = 20,
-            acceleration = 20,
+            diff = 2,
             points = 0;
             elements = [];
 
@@ -35,6 +34,12 @@
                 2: "#ffe0c0",
                 3: "#338dd8"
               },
+            };
+
+            const DIFFICULTY = {
+              0: {size: 20, acceleration: 20, points: 1},
+              1: {size: 20, acceleration: 40, points: 2},
+              2: {size: 20, acceleration: 60, points: 3},
             };
 
             const DIRECTION = {
@@ -52,17 +57,17 @@
             function generate(){
               elements.push({
                 color: colors[theme][Math.floor(Math.random() * colors[theme].numColors)],
-                radius: size,
+                radius: DIFFICULTY[diff].size,
                 x: elem.width/2,
                 y: elem.height/2,
-                speed: acceleration,
+                speed: DIFFICULTY[diff].acceleration,
                 ready: false,
                 clicked: false,
                 direction: DIRECTION[Math.floor(Math.random() * 4)],
                 previous: {
                   x: elem.width/2,
                   y: elem.height/2,
-                  radius: size + 5,
+                  radius: DIFFICULTY[diff].acceleration + 5,
                 }
               });
             }
@@ -113,9 +118,11 @@
                 draw(element.x, element.y, element.radius, element.color);
 
                 if((!intersect(pos, element) && element.ready) || element.clicked){
-                  if(elements.clicked){
-                    points++;
+                  //erases
+                  if(!element.clicked){
+                    points -= DIFFICULTY[diff].points;
                   }
+                  draw(element.x, element.y, element.radius, colors[theme].background);
                   elements.splice(elements.indexOf(element));
                 }
               });
@@ -134,10 +141,11 @@
                 if((element.direction.keyCode == clicked && element.ready && !element.clicked)){
                   goodClick = true;
                   element.clicked = true;
+                  points += DIFFICULTY[diff].points;
                 }
               });
               if(!goodClick){
-                points--;
+                points -= DIFFICULTY[diff].points;
               }
             }
 
