@@ -132,7 +132,7 @@
             context.font = "30px Arial";
             context.fillText("Press space to start", 10, 50);
 
-            elem.addEventListener('keydown', function(event) {
+            document.addEventListener('keydown', function(event) {
               if(event.keyCode == 32){
                 start();
               }else{
