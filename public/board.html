@@ -14,15 +14,18 @@
         </div>
 
         <div id = "game">
-          <canvas id = "gameCanvas" width = "500" height = "500" style="border:1px solid #000000;"/>
+          <a class = "difButton" onclick="diff(1)" id = "0">Easy</a>
+          <a class = "difButton" onclick="diff(2)" id = "1">Medium</a>
+          <a class = "difButton" onclick="diff(3)" id = "2">Hard</a>
+          <canvas id = "gameCanvas" width = "750" height = "750" style="border:1px solid #000000; position: absolute; top: 10%; right: 37.5%;"/>
 
-          <script language="JavaScript">
+          <script language="JavaScript">      
             var elem = document.getElementById('gameCanvas'),
             context = elem.getContext('2d'),
             started = false,
             paused = false,
             theme = "Dawn Winery",
-            diff = 2,
+            diff = 0;
             points = 0;
             elements = [];
 
@@ -39,9 +42,10 @@
             };
 
             const DIFFICULTY = {
-              0: {size: 20, acceleration: 1, points: 1, interval: 10},
-              1: {size: 20, acceleration: 5, points: 2, interval: 7},
-              2: {size: 20, acceleration: 10, points: 3, interval: 5},
+            //size of circles changed and accel of hard 10 -> 7
+              0: {size: 50, acceleration: 1, points: 1, interval: 10},
+              1: {size: 40, acceleration: 5, points: 2, interval: 7},
+              2: {size: 30, acceleration: 7, points: 3, interval: 5},
             };
 
             const DIRECTION = {
@@ -51,6 +55,13 @@
               3: {x: 1, y: 0, key: 'd', keyCode: 68, winX: elem.width, winY: elem.height/2}, //right
               4: {x: 0, y: 0, key: 'q', keyCode: 81, winX: 0, winY: 0} //stopped
             };
+
+            function diff(num){
+                diff = num;
+                getElementById(0).remove();
+                getElementById(1).remove();
+                getElementById(2).remove();
+			}
 
             function intersect(point, circle){
               return Math.sqrt((point.x-circle.x) ** 2 + (point.y-circle.y) ** 2) < circle.radius;
@@ -117,7 +128,7 @@
                   x: element.direction.winX,
                   y: element.direction.winY
                 };
-                //chagnes color, if neccesary
+                //changes color, if neccesary
                 if(intersect(pos, element)){
                   element.ready = true;
                   element.color = colors[theme].success;
@@ -136,9 +147,12 @@
 
                 if((!intersect(pos, element) && element.ready) || element.clicked){
                   //erases
+                  /*
+                  *see line 167*
                   if(!element.clicked){
                     points -= DIFFICULTY[diff].points;
                   }
+                  */
                   draw(element.x, element.y, element.radius, colors[theme].background);
                   elements.splice(elements.indexOf(element));
                 }
@@ -161,9 +175,12 @@
                   points += DIFFICULTY[diff].points;
                 }
               });
+              //Dont think we should subtract for points but only give points to successful scores?
+              /*
               if(!goodClick){
                 points -= DIFFICULTY[diff].points;
               }
+              */
             }
 
             context.font = "30px Arial";

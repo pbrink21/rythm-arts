@@ -65,7 +65,7 @@ d:hover {
     left: 30%;
     width:40%;   
     border:none;
-    display:block;
+    display:block-inline;
     padding:50px;
     margin-bottom:50px;
     text-decoration: none;
