@@ -4,23 +4,44 @@
         <meta charset="UTF-8">
         <title>Main Menu</title>
         <link rel="stylesheet" href="style.css">
-        
-    </head>
-    <body class="mainbackground">  
-        <div id = "title">
-            <P class="title">OSU</P>
-            <div id = "titleimg" class="titleimg">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Osu%21Logo_%282015%29.svg/1200px-Osu%21Logo_%282015%29.svg.png"  alt="OSU!" width= "500px" height= "500px">
-                    <div id="menu bar" class= "menubuttons">                               
-                            <a class="navButton" href="game page.html">Game</a>
-                            <a class="navButton" href="high score page.html">Hi-Score</a>
-                            <a class="navButton" href="shop page.html">Shop</a>
-                    </div>
-            </div>        
-        </div>
-        <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
-        <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
-        <script src="bundle.js"></script>
 
+    </head>
+
+    <body class="mainbackground">
+      <div id="menu bar" class= "menubuttons">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Osu%21Logo_%282015%29.svg/1200px-Osu%21Logo_%282015%29.svg.png"  alt="OSU!" width= "60px" height= "60px" class="ripoff">
+          <div class="middlebuttons">
+              <a class="active" href="main menu.html">Game</a>
+              <a class="navButton" href="high score page.html">Hi-Score</a>
+              <a class="navButton" href="shop page.html">Shop</a>
+          </div>
+      </div>
+        <div id = "title">
+            <div id = "titleimg" class="titleimg">
+
+
+            </div>
+        </div>
+        <div id="game bar" class= "bottombar">
+            <div class="gameSetting">
+                <form id="gameSet">
+                  <select name="difficulty">
+                    <option value="0">Easy</option>
+                    <option value="1">Medium</option>
+                    <option value="2">Hard</option>
+                  </select>
+                  <select name="theme">
+                    <option value="Default">Default</option>
+                    <option value="Dawn Winery">Dawn Winery</option>
+                    <option value="Hotto Dogu">Hotto Dogu</option>
+                    <option value="Umbrella">Umbrella</option>
+                  </select>
+                  <input type="button" value="Play!" onClick="setCookie()">
+                </form>
+            </div>
+        </div>
+
+        <script src="../src/main_menu.js">
+        </script>
     </body>
 </html>

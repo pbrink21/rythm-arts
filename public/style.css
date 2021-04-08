@@ -6,6 +6,10 @@
     font-family: 'Trebuchet MS', sans-serif;
 }
 
+body {
+  margin: 0;
+}
+
 nav {
     display:inline-block;
 }
@@ -31,12 +35,12 @@ d:hover {
 }
 
 .mainbackground {
-	background-image: url('https://i.pinimg.com/originals/5a/64/63/5a6463e51b284bfcbc34869dc72cf0cd.gif');
+  background-image: url('https://i.pinimg.com/originals/5a/64/63/5a6463e51b284bfcbc34869dc72cf0cd.gif');
 	background-size:100%;
-	background-repeat:repeat;  
+	background-repeat:repeat;
 }
 
-.navButton {    
+.navButton {
     font-size:x-large;
     color:white;
     padding:8px 16px;
@@ -45,19 +49,19 @@ d:hover {
     border:none;
     display:inline-block;
     text-decoration: none;
-    
+
     cursor:pointer;
 }
 
-.difButton {    
+.difButton {
     position:relative;
     font-size:x-large;
-    color:#FFFFFF;   
+    color:#FFFFFF;
     background-color: #ff66aa;
     text-align:center;
     top: 50%;
     left: 30%;
-    width:40%;   
+    width:40%;
     border:none;
     display:block;
     padding:50px;
@@ -72,7 +76,7 @@ d:hover {
     left: 40%;
     width: 20%;
     height: 20%;
-    text-align: center;    
+    text-align: center;
 }
 
 .title:after{
@@ -92,9 +96,47 @@ d:hover {
 }
 
 .menubuttons{
-    position: absolute;
-    top: 43%;
-    right: -62%;
+    position: fixed;
+    overflow: hidden;
+    text-align: center;
+    background: #bf1f66;
+    width: 100%;
+    padding: 20px;
+}
+
+.menubuttons a {
+  float: center;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 30px;
+  margin: 0;
+}
+
+.menubuttons a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.menubuttons a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.bottombar{
+  position: fixed;
+  overflow: hidden;
+  bottom: 0;
+  text-align: center;
+  background: #bf1f66;
+  width: 100%;
+  padding: 20px;
+}
+.ripoff{
+  float: left;
+  margin: 0;
+  padding: 0;
 }
 
 .grid-container {
@@ -113,4 +155,17 @@ d:hover {
   padding: 20px;
   font-size: 30px;
   text-align: center;
+}
+
+canvas {
+  display: block;
+  padding: 0;
+  margin: auto;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
 }
