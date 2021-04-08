@@ -5,44 +5,24 @@
         <title>Game</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Osu%21Logo_%282015%29.svg/1200px-Osu%21Logo_%282015%29.svg.png"  alt="OSU!" width= "500px" height= "500px">
+
+    <body class="levelBackground">
+
         <div id="app">
             <a class = "navButton" href="main menu.html">Home</a>
         </div>
+                   <div id="difficulty" class="difficultyselect">
+                    <a class = "difButton" onclick="diff(0)" id = "0">Easy</a>
+                    <a class = "difButton" onclick="diff(1)" id = "1">Medium</a>
+                    <a class = "difButton" onclick="diff(2)" id = "2">Hard</a>
+                    <a class = "confirm" href="board.html" id = confirm>Confirm</a>
+                    <script language="JavaScript">
+                        function diff(num){
 
-        <div id = "select">
-            <div  songArtist = "Genshin Impact">
-                "Dawn Winery Theme"
-                <div id="difficulty" class="difficultyselect">
-                    <b class = "difButton" href="board.html">Easy</b>
-                    <c class = "difButton" href="board.html">Medium</c>
-                    <d class = "difButton" href="board.html">Hard</d>
-                </div>
-            </div>
-            <div  songArtist = "heiakim">
-                "Hotto Dogu"
-                <div id="difficulty" class="difficultyselect">
-                    <b class = "difButton" href="board.html">Easy</b>
-                    <c class = "difButton" href="board.html">Medium</c>
-                    <d class = "difButton" href="board.html">Hard</d>
-                </div>
-            </div>
-            <div  songArtist = "Rihanna">
-                "Umbrella"
-                <div id="difficulty" class="difficultyselect">
-                    <b class = "difButton" href="board.html">Easy</b>
-                    <c class = "difButton" href="board.html">Medium</c>
-                    <d class = "difButton" href="board.html">Hard</d>
-                </div>
-            </div>
-        </div>
+						}
+                    </script>
 
-
-
-
-
-
+                  </div>
 
         <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
         <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>

@@ -51,9 +51,9 @@ const colors = {
 };
 
 const DIFFICULTY = {
-  0: {size: 20, acceleration: 1, points: 1, interval: 10},
-  1: {size: 20, acceleration: 5, points: 2, interval: 7},
-  2: {size: 20, acceleration: 10, points: 3, interval: 5},
+  0: {size: 50, acceleration: 1, points: 1, interval: 10},
+  1: {size: 40, acceleration: 5, points: 2, interval: 7},
+  2: {size: 30, acceleration: 7, points: 3, interval: 5},
 };
 
 const DIRECTION = {
@@ -110,6 +110,8 @@ function start(){
     if(numCircles <= 0){
       clearInterval(sn);
       alert("you have gotten " + points + " points");
+      //add points to some value in database
+      window.location.replace("main menu.html");
     }
   }, DIFFICULTY[diff].interval);
 }
@@ -168,9 +170,10 @@ function iterate(){
 
     if((!intersect(pos, element) && element.ready) || element.clicked){
       //erases
+      /*
       if(!element.clicked){
         points -= DIFFICULTY[diff].points;
-      }
+      }*/
       draw(element.x, element.y, element.radius, colors[theme].background);
       elements.splice(elements.indexOf(element));
     }
@@ -197,9 +200,10 @@ function handleClick(clicked){
       points += DIFFICULTY[diff].points;
     }
   });
+  /*
   if(!goodClick){
     points -= DIFFICULTY[diff].points;
-  }
+  }*/
 }
 
 document.addEventListener('keydown', function(event) {

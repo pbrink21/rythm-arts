@@ -35,7 +35,13 @@ d:hover {
 }
 
 .mainbackground {
-  background-image: url('https://i.pinimg.com/originals/5a/64/63/5a6463e51b284bfcbc34869dc72cf0cd.gif');
+	background-image: url('https://i.pinimg.com/originals/5a/64/63/5a6463e51b284bfcbc34869dc72cf0cd.gif');
+	background-size:100%;
+	background-repeat:repeat;
+}
+
+.levelBackground {
+	background-image: url('https://i.pinimg.com/originals/fa/dc/b2/fadcb24075acb650de29f258af69d830.gif');
 	background-size:100%;
 	background-repeat:repeat;
 }
@@ -63,7 +69,7 @@ d:hover {
     left: 30%;
     width:40%;
     border:none;
-    display:block;
+    display:block-inline;
     padding:50px;
     margin-bottom:50px;
     text-decoration: none;
@@ -134,7 +140,14 @@ d:hover {
   padding: 20px;
 }
 .ripoff{
-  float: left;
+  position: absolute;
+  left: 10px;
+  margin: 0;
+  padding: 0;
+}
+.account{
+  position: absolute;
+  right: 50px;
   margin: 0;
   padding: 0;
 }
@@ -157,12 +170,12 @@ d:hover {
   text-align: center;
 }
 
-canvas {
+.gamediv {
   display: block;
   padding: 0;
   margin: auto;
-  width: 500px;
-  height: 500px;
+  width: 750px;
+  height: 750px;
   position: absolute;
   top:0;
   bottom:0;
