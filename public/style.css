@@ -46,19 +46,6 @@ d:hover {
 	background-repeat:repeat;
 }
 
-.navButton {
-    font-size:x-large;
-    color:white;
-    padding:8px 16px;
-    background-color: #ff66aa;
-    width:auto;
-    border:none;
-    display:inline-block;
-    text-decoration: none;
-
-    cursor:pointer;
-}
-
 .difButton {
     position:relative;
     font-size:x-large;
@@ -101,33 +88,46 @@ d:hover {
     right: 50%;
 }
 
-.menubuttons{
-    position: fixed;
+.topnav{
     overflow: hidden;
-    text-align: center;
     background: #bf1f66;
-    width: 100%;
-    padding: 20px;
+    position: relative;
 }
 
-.menubuttons a {
-  float: center;
+.topnav a {
+  float: left;
   color: #f2f2f2;
+  background-color: #ff66aa;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 30px;
-  margin: 0;
 }
 
-.menubuttons a:hover {
+.topnav a:hover, .dropdown:hover .account {
   background-color: #ddd;
   color: black;
 }
 
-.menubuttons a.active {
+.topnav a.active {
   background-color: #4CAF50;
   color: white;
+}
+
+.topnav-centered ul {
+  display: inline;
+  list-style-type: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin:0;
+}
+.topnav-centered li {
+  float: left;
+}
+.topnav-centered a {
+  display: block;
 }
 
 .bottombar{
@@ -140,16 +140,10 @@ d:hover {
   padding: 20px;
 }
 .ripoff{
-  position: absolute;
-  left: 10px;
-  margin: 0;
+  float: left;
   padding: 0;
-}
-.account{
-  position: absolute;
-  right: 50px;
+  padding-left: 10px;
   margin: 0;
-  padding: 0;
 }
 
 .grid-container {
@@ -177,8 +171,50 @@ d:hover {
   width: 750px;
   height: 750px;
   position: absolute;
-  top:0;
+  top:40px;
   bottom:0;
   left:0;
   right:0;
+}
+
+.dropdown{
+  overflow: hidden;
+  float: right;
+}
+
+.dropdown .account{
+  font-size:30px;
+  border:none;
+  outline: none;
+  color:white;
+  padding:14px 16px;
+  background-color: #ff66aa;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
