@@ -227,11 +227,10 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('DOMContentLoaded', function(){
   diff = getCookie("diff");
   theme = getCookie("theme");
-  //context.fillStyle = colors[theme].background;
-  context.fillStyle = "rgba(0, 0, 0, 0.2)";
+  context.fillStyle = colors[theme].background;
   context.rect(0, 0, elem.width, elem.height);
   context.fill();
-  //context.fillStyle = colors[theme].text;
+  context.fillStyle = colors[theme].text;
   context.font = "30px Arial";
   context.fillText("Press space to start", 10, 50);
 }, false);
