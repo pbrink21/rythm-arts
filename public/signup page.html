@@ -16,15 +16,12 @@
             document.getElementById('message').innerHTML = 'not matching';
         }
     }
-    function trysignup() {
-        
-    }
 </script>
 
 <body style="background-image: url(../images/background.jpg);">
     <div class="login" style="height: 260px">
         <x class="login-title" style="left: 34%">Signup</x>
-        <form>
+        <form action="http://localhost:3000/signup" method= "POST">
             <div class="login-header">
                 <x style="padding-right: 10px">Username</x>
                 <input id="username" name="username" placeholder="Enter Username" value="">
@@ -39,7 +36,7 @@
             </div>
             <x style="position: relative; left: 40%; top:10px;" id="message"></x>
             <div style="position: relative; margin: 30px 0px 20px;">
-                <input onclick= "trysignup()" type="button" class="signup-button" style="background-color: limegreen;" value="Confirm Signup">
+                <input type="submit" class="signup-button" style="background-color: limegreen;" value="Confirm Signup">
             </div>
         </form>
         
