@@ -218,3 +218,40 @@ d:hover {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.login{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  padding: 10px;
+  background-color: white;
+}
+
+.login-title{
+  position: relative;
+  font-size: xx-large;
+}
+
+.login-header{
+  position: relative;
+  margin: 25px 10px 0px;
+}
+
+.login-buttons{
+  position: relative;
+  left: 10px;
+  top: -10px;
+  padding: 5px;
+  margin: 0px 10px;
+}
+
+.signup-button{
+  position: relative;
+  padding: 5px;
+  width: 80%;
+  left: 10%;
+}
