@@ -84,7 +84,7 @@ d:hover {
 
 .titleimg{
     position:absolute;
-    top: 25%;
+    top: 35%;
     right: 50%;
 }
 
@@ -178,8 +178,10 @@ d:hover {
 }
 
 .dropdown{
-  overflow: hidden;
+  position absolute;
+  overflow: visible;
   float: right;
+  z-index: 300;
 }
 
 .dropdown .account{
@@ -191,6 +193,15 @@ d:hover {
   background-color: #ff66aa;
   font-family: inherit;
   margin: 0;
+}
+
+.dropbtn {
+  background-color: #ff66aa;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
 
 .dropdown-content {
@@ -218,6 +229,8 @@ d:hover {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.show {display: block;}
 
 .login{
   position: absolute;
@@ -255,3 +268,5 @@ d:hover {
   width: 80%;
   left: 10%;
 }
+
+

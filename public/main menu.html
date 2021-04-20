@@ -19,11 +19,11 @@
           <img src="../images/logo_cropped.png" width= "300px" height= "60px" class="ripoff">
 
           <div class="dropdown">
-              <button class="account">Account \/</button>
-                <div class="dropdown-content">
-                  <a href="#">Account Details</a>
-                  <a href="#">Account Settings</a>
-                  <a href="#">Logout</a>
+              <button onclick = "myFunction()" class="dropbtn">Account \/</button>
+                <div id = "myDropdown" class="dropdown-content">
+                  <a href="#accdetails">Account Details</a>
+                  <a href="#settings">Account Settings</a>
+                  <a href="#logout">Logout</a>
                 </div>
           </div>
       </div>
@@ -50,10 +50,14 @@
 	<audio id="audio" src="lobbyMusic.mp3"></audio>
 
 	<script>
-		document.addEventListener('click', musicPlay);
-		function musicPlay() {
-   			 document.getElementById('audio').play();
-    			document.removeEventListener('click', musicPlay);
+		//document.addEventListener('click', musicPlay);
+		//function musicPlay() {
+   		//	 document.getElementById('audio').play();
+    	//		document.removeEventListener('click', musicPlay);
+		//}
+
+        function myFunction(){
+            document.getElementById("myDropdown").classList.toggle("show");  
 		}
 	</script>
 
