@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Board</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body class="levelBackground">
+      <div id="menu bar" class= "topnav">
+          <div class="topnav-centered">
+            <ul>
+              <li><a class="active" href="/mainmenu">Game</a></li>
+              <li><a class="navButton" href="/highscore">Hi-Score</a></li>
+              <li><a class="navButton" href="/shop">Shop</a></li>
+            </ul>
+          </div>
+          <img src="/images/logo_cropped.png" width= "300px" height= "60px" class="ripoff">
+
+          <div class="dropdown">
+              <button class="account">Account \/</button>
+                <div class="dropdown-content">
+                  <a href="#">Account Details</a>
+                  <a href="#">Account Settings</a>
+                  <a href="#">Logout</a>
+                </div>
+          </div>
+      </div>
+        <div id = "game" class="gamediv">
+          <canvas id = "gameCanvas" width = "750" height = "750" style="border:1px solid #000000;"/>
+          <script src="../src/osu.js"></script>
+        </div>
+        <div id = "butt" class="bottombar"> Press Space to Pause or Resume </div>
+    </body>
+</html>

@@ -178,7 +178,7 @@ d:hover {
 }
 
 .dropdown{
-  position absolute;
+  position: absolute;
   overflow: visible;
   float: right;
   z-index: 300;

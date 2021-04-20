@@ -1,17 +1,49 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+const http = require('http');
+const fs = require('fs');
+const _ = require('lodash');
 
-const app = express();
 
-// parse requests of content-type: application/json
-app.use(bodyParser.json());
 
-// parse requests of content-type: application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+const server = http.createServer((req,res) => {
+    console.log(req.url, req.method);
+    
+    res.setHeader('Content-type', 'text/html');
 
-require("./app/routes/user.routes.js")(app);
+    let path = './public';
+    switch(req.url) {
+        case '/':
+            path += '/landing page.html';
+            break;
+        case '/signup':
+            path += '/signup page.html';
+            break;
+        case '/shop':
+            path += '/shop page.html';
+            break;
+        case '/mainmenu':
+            path += '/main menu.html';
+            break;
+        case '/highscore':
+            path += '/high score page.html';
+            break;
+        case '/game':
+            path += '/game page.html';
+            break;
+        case '/board':
+            path += '/board.html'
+    }
 
-// set port, listen for requests
-app.listen(3000, () => {
-  console.log("Server is running on port 3000.");
+    fs.readFile(path, (err, data) => {
+        if (err) {
+            console.log('---ERROR---');
+            console.log(err);
+        }else{
+            res.write(data);
+            res.end();
+        }
+    })
 });
+
+server.listen(3000, 'localhost', () => {
+    console.log('listening on port 3000');
+})
