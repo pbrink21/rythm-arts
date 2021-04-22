@@ -4,7 +4,12 @@ started = false,
 paused = false,
 theme = "Default",
 diff = 0,
-points = 0;
+points = 0,
+user = "",
+hit = 0,
+missed = 0,
+misClicked = 0,
+numCircles = 10,
 elements = [];
 
 const colors = {
@@ -68,29 +73,6 @@ const DIRECTION = {
 //deleteCookie("diff");
 //deleteCookie("theme");
 
-function intersect(point, circle){
-  return Math.sqrt((point.x-circle.x) ** 2 + (point.y-circle.y) ** 2) < circle.radius;
-}
-
-function generate(){
-  elements.push({
-    color: colors[theme][Math.floor(Math.random() * colors[theme].numColors)],
-    radius: DIFFICULTY[diff].size,
-    x: elem.width/2,
-    y: elem.height/2,
-    speed: DIFFICULTY[diff].acceleration,
-    ready: false,
-    clicked: false,
-    direction: DIRECTION[Math.floor(Math.random() * 4)],
-    previous: {
-      x: elem.width/2,
-      y: elem.height/2,
-      radius: DIFFICULTY[diff].acceleration + 5,
-      dir: this.direction,
-    }
-  });
-}
-
 function start(){
   started = true;
   generate();
@@ -100,7 +82,6 @@ function start(){
   elements.forEach(function(element){
     draw(element.x, element.y, element.radius, element.color);
   });
-  var numCircles = 10;
   var sn = setInterval(function(){
     iterate();
     if(elements.length == 0){
@@ -109,40 +90,9 @@ function start(){
     }
     if(numCircles <= 0){
       clearInterval(sn);
-      alert("you have gotten " + points + " points");
-      //add points to some value in database
-      window.location.replace("main menu.html");
+      stop();
     }
   }, DIFFICULTY[diff].interval);
-}
-
-function pause(){
-  elements.forEach(function(element){
-    element.previous.dir = element.direction;
-    element.direction = DIRECTION[4];
-  })
-}
-
-function resume(){
-  elements.forEach(function(element){
-    element.direction = element.previous.dir;
-  })
-}
-
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
 }
 
 function iterate(){
@@ -169,19 +119,55 @@ function iterate(){
     draw(element.x, element.y, element.radius, element.color);
 
     if((!intersect(pos, element) && element.ready) || element.clicked){
-      //erases
-      /*
+      //missed circle
       if(!element.clicked){
-        points -= DIFFICULTY[diff].points;
-      }*/
+        missed++;
+      }
+      //erases
       draw(element.x, element.y, element.radius, colors[theme].background);
       elements.splice(elements.indexOf(element));
     }
   });
 }
 
-function deleteCookie(cname){
-  document.cookie=cname+"=expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+function pause(){
+  elements.forEach(function(element){
+    element.previous.dir = element.direction;
+    element.direction = DIRECTION[4];
+  })
+}
+
+function resume(){
+  elements.forEach(function(element){
+    element.direction = element.previous.dir;
+  })
+}
+
+function stop(){
+  alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + "circles");
+  //add points to some value in database
+  window.location.replace("/mainmenu");
+}
+
+function handleClick(clicked){
+  var goodClick = false;
+  elements.forEach(function(element){
+    //succesful click
+    if((element.direction.keyCode == clicked && element.ready && !element.clicked)){
+      goodClick = true;
+      element.clicked = true;
+      hit++;
+      points += DIFFICULTY[diff].points;
+    }
+  });
+//incorrect click
+  if(!goodClick){
+    misClicked++;
+  }
+}
+
+function intersect(point, circle){
+  return Math.sqrt((point.x-circle.x) ** 2 + (point.y-circle.y) ** 2) < circle.radius;
 }
 
 function draw(x, y, r, c){
@@ -191,19 +177,43 @@ function draw(x, y, r, c){
   context.fill();
 }
 
-function handleClick(clicked){
-  var goodClick = false;
-  elements.forEach(function(element){
-    if((element.direction.keyCode == clicked && element.ready && !element.clicked)){
-      goodClick = true;
-      element.clicked = true;
-      points += DIFFICULTY[diff].points;
+function generate(){
+  elements.push({
+    color: colors[theme][Math.floor(Math.random() * colors[theme].numColors)],
+    radius: DIFFICULTY[diff].size,
+    x: elem.width/2,
+    y: elem.height/2,
+    speed: DIFFICULTY[diff].acceleration,
+    ready: false,
+    clicked: false,
+    direction: DIRECTION[Math.floor(Math.random() * 4)],
+    previous: {
+      x: elem.width/2,
+      y: elem.height/2,
+      radius: DIFFICULTY[diff].acceleration + 5,
+      dir: this.direction,
     }
   });
-  /*
-  if(!goodClick){
-    points -= DIFFICULTY[diff].points;
-  }*/
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function deleteCookie(cname){
+  document.cookie=cname+"=expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 document.addEventListener('keydown', function(event) {
@@ -227,6 +237,7 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('DOMContentLoaded', function(){
   diff = getCookie("diff");
   theme = getCookie("theme");
+  user = getCookie("user");
   context.fillStyle = colors[theme].background;
   context.rect(0, 0, elem.width, elem.height);
   context.fill();
