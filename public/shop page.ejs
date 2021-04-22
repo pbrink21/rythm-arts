@@ -27,24 +27,32 @@
       </div>
         <div class="grid-container">
           <form id = "shop">
-                  <button id = "0" value = "0" class="grid-item">Bigger Circles 1</button>
-                  <button id = "1" value = "1" class="grid-item">Time Slow 1</button>
-                  <button id = "2" value = "2" class="grid-item">More Saves 1</button>
-                  <button id = "3" value = "3" class="grid-item">Background 1</button>
-                  <button id = "4" value = "4" class="grid-item">Cursor Design 1</button>
-                  <button id = "5" value = "5" class="grid-item">More Saves 2</button>
-                  <button id = "6" value = "6" class="grid-item">Bigger Circles 3</button>
-                  <button id = "7" value = "7" class="grid-item">Time Slow 3</button>
-                  <button id = "8" value = "8" class="grid-item">More Saves 3</button>
+                  <button id = "0" value = "100" class="grid-item" onClick = "buy(0)">Bigger Circles 1</button>
+                  <button id = "1" value = "100" class="grid-item" onClick = "buy(1)">Time Slow 1</button>
+                  <button id = "2" value = "100" class="grid-item" onClick = "buy(2)">More Saves 1</button>
+                  <button id = "3" value = "100" class="grid-item" onClick = "buy(3)">Background 1</button>
+                  <button id = "4" value = "100" class="grid-item" onClick = "buy(4)">Cursor Design 1</button>
+                  <button id = "5" value = "100" class="grid-item" onClick = "buy(5)">More Saves 2</button>
+                  <button id = "6" value = "100" class="grid-item" onClick = "buy(6)">Bigger Circles 3</button>
+                  <button id = "7" value = "100" class="grid-item" onClick = "buy(7)">Time Slow 3</button>
+                  <button id = "8" value = "100" class="grid-item" onClick = "buy(8)">More Saves 3</button>
           </form>
         </div>
         <div id="game bar" class= "bottombar"></div>
         <script>
           var user = document.getCookie("user");
-          var points = 0;
+          var points = 0; //TODO: get points value from DB
 
-          function buy(thing, cost){
-
+          function buy(thing){
+            var form = document.getElementById("shop");
+            var button = form.getElementById(thing);
+            if(points < button.value){
+              alert("You are broke.");
+              return;
+            }else{
+              //TODO: subtract points, add to purchased list
+              alert("You have purchased an item.");
+            }
           }
 
           function getCookie(cname) {

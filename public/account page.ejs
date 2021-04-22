@@ -25,10 +25,10 @@
  <form>
    <div class="row">
      <div class="col-25">
-       <label for="uname">Username</label>
+       <label class="actLbl" for="uname">Username</label>
      </div>
      <div class="col-75">
-       <input type="text" id="uname" name="username" placeholder="Username..">
+       <input class="acctTxt" type="text" id="uname" name="username" placeholder="Username..">
      </div>
    </div>
    <div class="row">
@@ -36,7 +36,7 @@
        <label for="dname">Display name</label>
      </div>
      <div class="col-75">
-       <input type="text" id="dname" name="displayname" placeholder="Display name..">
+       <input class="acctTxt" type="text" id="dname" name="displayname" placeholder="Display name..">
      </div>
    </div>
    <div class="row">
@@ -44,8 +44,8 @@
        <label for="pass">Password Change</label>
      </div>
      <div class="col-75">
-       <input type="password" id="password" name="password" placeholder="Enter Password" onkeyup="check()">
-       <input style="position: relative; left: 30%;" type="password" id="confirm_password"
+       <input class="acctTxt" type="password" id="password" name="password" placeholder="Enter Password" onkeyup="check()">
+       <input class="acctTxt" style="position: relative; left: 30%;" type="password" id="confirm_password"
            name="confirm_password" placeholder="Confirm Password" onkeyup="check()">
            <x style="position: relative; left: 40%; top:10px;" id="message"></x>
      </div>
@@ -55,14 +55,14 @@
        <label for="desc">Account Description</label>
      </div>
      <div class="col-75">
-       <textarea id="desc" name="description" placeholder="Write something.." style="height:200px"></textarea>
+       <textarea class="acctTxt" id="desc" name="description" placeholder="Write something.." style="height:200px"></textarea>
      </div>
    </div>
    <div class="row">
      <div class="col-25">
       <button class = "logout" onClick = "logout()">Logout</button>
      </div>
-     <input type="submit" value="Save" onClick="submit">
+     <input class = "acctSub" type="submit" value="Save" onClick="submit">
    </div>
  </form>
 </div>
