@@ -46,6 +46,12 @@ d:hover {
 	background-repeat:repeat;
 }
 
+.accountbtn{
+    position: absolute;
+    top: -1px;
+    right: 10%;
+}
+
 .difButton {
     position:relative;
     font-size:x-large;
