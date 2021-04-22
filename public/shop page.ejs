@@ -21,12 +21,12 @@
       </div>
       <div class="overcontainer">
         <div class="grid-container">
-          <form id = "shop">               
+          <form id = "shop">
                   <button id = "0" value = "100" class="grid-item" onClick = "buy(0)">Bigger Circles 1</button>
                   <button id = "1" value = "100" class="grid-item" onClick = "buy(1)">Time Slow 1</button>
                   <button id = "2" value = "100" class="grid-item" onClick = "buy(2)">More Saves 1</button>
                   <button id = "3" value = "100" class="grid-item" onClick = "buy(3)">Background 1</button>
-                  <button id = "4" value = "100" class="grid-item" onClick = "buy(4)">Cursor Design 1</button>              
+                  <button id = "4" value = "100" class="grid-item" onClick = "buy(4)">Cursor Design 1</button>
                   <button id = "5" value = "100" class="grid-item" onClick = "buy(5)">More Saves 2</button>
                   <button id = "6" value = "100" class="grid-item" onClick = "buy(6)">Bigger Circles 3</button>
                   <button id = "7" value = "100" class="grid-item" onClick = "buy(7)">Time Slow 3</button>
@@ -35,34 +35,7 @@
         </div>
       </div>
         <div id="game bar" class= "bottombar"></div>
-        <script>
-          var user = document.getCookie("user");
-          var points = 0; //TODO: get points value from DB
-=======
-    <div>
-      <a class="accountbtn" href="/">Account</a>
-    </div>
->>>>>>> refs/remotes/origin/master
-
-    <img src="/images/logo_cropped.png" width="300px" height="60px" class="ripoff">
-
-  </div>
-  <div class="grid-container">
-    <form id= "shop">
-      <button id="0" value="100" class="grid-item" onClick="buy(0)">Bigger Circles 1</button>
-      <button id="1" value="100" class="grid-item" onClick="buy(1)">Time Slow 1</button>
-      <button id="2" value="100" class="grid-item" onClick="buy(2)">More Saves 1</button>
-      <button id="3" value="100" class="grid-item" onClick="buy(3)">Background 1</button>
-      <button id="4" value="100" class="grid-item" onClick="buy(4)">Cursor Design 1</button>
-      <button id="5" value="100" class="grid-item" onClick="buy(5)">More Saves 2</button>
-      <button id="6" value="100" class="grid-item" onClick="buy(6)">Bigger Circles 3</button>
-      <button id="7" value="100" class="grid-item" onClick="() => buy(7)">Time Slow 3</button>
-      <button id="8" value="100" class="grid-item" onClick="buy(8)">More Saves 3</button>
-    </form>
-  </div>
-  <div id="game bar" class="bottombar">
-  </div>
-  <script>
+<script>
     var user = document.getCookie("user");
     var users = <%= users %>; //TODO: get points value from DB
     var u, points;
