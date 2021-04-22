@@ -33,14 +33,29 @@
       <button id="4" value="100" class="grid-item" onClick="buy(4)">Cursor Design 1</button>
       <button id="5" value="100" class="grid-item" onClick="buy(5)">More Saves 2</button>
       <button id="6" value="100" class="grid-item" onClick="buy(6)">Bigger Circles 3</button>
-      <button id="7" value="100" class="grid-item" onClick="buy(7)">Time Slow 3</button>
+      <button id="7" value="100" class="grid-item" onClick="() => buy(7)">Time Slow 3</button>
       <button id="8" value="100" class="grid-item" onClick="buy(8)">More Saves 3</button>
     </form>
   </div>
-  <div id="game bar" class="bottombar"></div>
+  <div id="game bar" class="bottombar">
+  </div>
   <script>
     var user = document.getCookie("user");
-    var points = 0; //TODO: get points value from DB
+    var users = <%= users %>; //TODO: get points value from DB
+    var u, points;
+
+    if(users.length == 0){
+      console.log("no users grabbed");
+    }else{
+      users.foreach(l){
+        console.log(l.user_name);
+        if(l.user_name = user){
+          u = l;
+          points = l.points;
+        }
+      }
+    }
+
 
     function buy(thing) {
       var form = document.getElementById("shop");
