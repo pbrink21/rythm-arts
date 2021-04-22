@@ -9,6 +9,12 @@ mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => console.log("Connected to the database!"), app.listen(3000))
     .catch((err) => console.log(err));
 
+function setCookie(u,res) {
+    var p = new Date();
+    p.setTime(p.getTime() + (3 * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + p.toUTCString();
+    res.cookie('user', u, { expires: p});
+  }
 
 app.set('view engine', 'ejs');
 app.set('views', 'public');
@@ -84,6 +90,7 @@ app.post('/users/login', (req, res) => {
             return res.status(404).send({ message: "User does not exist" });
         }
         else if (user.user_pass == newuser.user_pass) {
+            setCookie(user.user_name,res);
             res.redirect('/mainmenu');
         } else {
             return res.status(401).send({ message: "Wrong Password" });
