@@ -15,7 +15,7 @@
             </ul>
           </div>
           <img src="/images/logo_cropped.png" width= "300px" height= "60px" class="ripoff">
-          
+
           <div class="dropdown">
               <button class="account">Account \/</button>
                 <div class="dropdown-content">
@@ -26,20 +26,42 @@
           </div>
       </div>
         <div class="grid-container">
-                  <div class="grid-item">Bigger Circles 1</div>
-                  <div class="grid-item">Time Slow 1</div>
-                  <div class="grid-item">More Saves 1</div>
-                  <div class="grid-item">Background 1</div>
-                  <div class="grid-item">Cursor Design 1</div>
-                  <div class="grid-item">More Saves 2</div>
-                  <div class="grid-item">Bigger Circles 3</div>
-                  <div class="grid-item">Time Slow 3</div>
-                  <div class="grid-item">More Saves 3</div>
+          <form id = "shop">
+                  <button id = "0" value = "0" class="grid-item">Bigger Circles 1</button>
+                  <button id = "1" value = "1" class="grid-item">Time Slow 1</button>
+                  <button id = "2" value = "2" class="grid-item">More Saves 1</button>
+                  <button id = "3" value = "3" class="grid-item">Background 1</button>
+                  <button id = "4" value = "4" class="grid-item">Cursor Design 1</button>
+                  <button id = "5" value = "5" class="grid-item">More Saves 2</button>
+                  <button id = "6" value = "6" class="grid-item">Bigger Circles 3</button>
+                  <button id = "7" value = "7" class="grid-item">Time Slow 3</button>
+                  <button id = "8" value = "8" class="grid-item">More Saves 3</button>
+          </form>
         </div>
-
         <div id="game bar" class= "bottombar"></div>
-        <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
-        <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
-        <script src="bundle.js"></script>
+        <script>
+          var user = document.getCookie("user");
+          var points = 0;
+
+          function buy(thing, cost){
+
+          }
+
+          function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+            return "";
+          }
+        </script>
     </body>
 </html>

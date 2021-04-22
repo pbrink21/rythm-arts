@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Account</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="mainbackground">
+      <div id="menu bar" class= "topnav">
+          <div class="topnav-centered">
+            <ul>
+              <li><a class="navButton" href="main menu.html">Game</a></li>
+              <li><a class="navButton" href="high score page.html">Hi-Score</a></li>
+              <li><a class="navButton" href="shop page.html">Shop</a></li>
+            </ul>
+          </div>
+          <img src="../images/logo_cropped.png" width= "300px" height= "60px" class="ripoff">
+
+          <div class="dropdown">
+              <a class="topnav-right, active" href="account page.html">Account</a>
+          </div>
+      </div>
+
+      <div class="container">
+ <form>
+   <div class="row">
+     <div class="col-25">
+       <label for="uname">Username</label>
+     </div>
+     <div class="col-75">
+       <input type="text" id="uname" name="username" placeholder="Username..">
+     </div>
+   </div>
+   <div class="row">
+     <div class="col-25">
+       <label for="dname">Display name</label>
+     </div>
+     <div class="col-75">
+       <input type="text" id="dname" name="displayname" placeholder="Display name..">
+     </div>
+   </div>
+   <div class="row">
+     <div class="col-25">
+       <label for="pass">Password Change</label>
+     </div>
+     <div class="col-75">
+       <input type="password" id="password" name="password" placeholder="Enter Password" onkeyup="check()">
+       <input style="position: relative; left: 30%;" type="password" id="confirm_password"
+           name="confirm_password" placeholder="Confirm Password" onkeyup="check()">
+           <x style="position: relative; left: 40%; top:10px;" id="message"></x>
+     </div>
+   </div>
+   <div class="row">
+     <div class="col-25">
+       <label for="desc">Account Description</label>
+     </div>
+     <div class="col-75">
+       <textarea id="desc" name="description" placeholder="Write something.." style="height:200px"></textarea>
+     </div>
+   </div>
+   <div class="row">
+     <div class="col-25">
+      <button class = "logout" onClick = "logout()">Logout</button>
+     </div>
+     <input type="submit" value="Save" onClick="submit">
+   </div>
+ </form>
+</div>
+      <div id="game bar" class= "bottombar"></div>
+      <script>
+          function check() {
+              if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
+                  document.getElementById('message').style.color = 'green';
+                  document.getElementById('message').innerHTML = 'matching';
+              } else {
+                  document.getElementById('message').style.color = 'red';
+                  document.getElementById('message').innerHTML = 'not matching';
+              }
+          }
+
+          function logout() {
+
+          }
+
+          function submit() {
+
+          }
+      </script>
+    </body>
+</html>
