@@ -144,8 +144,19 @@ function resume(){
 }
 
 function stop(){
-  alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + "circles");
+  console.log("game stopped");
+  if(hit == numCircles){
+    document.getElementsByName("games.won") = 1;
+  }else{
+    document.getElementsByName("games.lost") = 1;
+  } 
+  alert("you have gotten " + points + " points, hit " + hit + " circles, and missed " + missed + "circles");
   //add points to some value in database
+  document.getElementByName("user_name") = user;
+  document.getElementByName("points") = points;
+  document.getElementByName("circles.hit") = hit;
+  document.getElementByName("circles.miss") = missed;
+  document.getElementByName("game").submit();
   window.location.replace("/mainmenu");
 }
 

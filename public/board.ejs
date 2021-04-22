@@ -27,7 +27,15 @@
           </div>
       </div>
         <div id = "game" class="gamediv">
-          <canvas id = "gameCanvas" width = "750" height = "750" style="border:1px solid #000000;"/>
+          <form name="game" action="/users/stats" method = "PUT">
+            <canvas id = "gameCanvas" width = "750" height = "750" style="border:1px solid #000000;"/>
+            <input name= "user_name" value= "">
+            <input name= "points" value=0>
+            <input name= "circles.hit" value=0>
+            <input name= "circles.miss" value=0>
+            <input name= "games.won" value=0>
+            <input name= "games.lost" value=0>
+          </form>
           <script Content-Type="text/javascript" src="./src/osu.js"></script>
         </div>
         <div id = "butt" class="bottombar"> Press Space to Pause or Resume </div>
