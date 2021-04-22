@@ -9,7 +9,8 @@ user = "",
 hit = 0,
 missed = 0,
 misClicked = 0,
-numCircles = 10,
+numCircles = 3,
+totalCircles = numCircles,
 elements = [];
 
 const colors = {
@@ -89,6 +90,7 @@ function start(){
       numCircles--;
     }
     if(numCircles <= 0){
+      console.log("hit");
       clearInterval(sn);
       stop();
     }
@@ -145,19 +147,21 @@ function resume(){
 
 function stop(){
   console.log("game stopped");
-  if(hit == numCircles){
-    document.getElementsByName("games.won") = 1;
+  console.log(hit + " hits");
+  console.log(totalCircles + " circles");
+  if(hit == totalCircles){
+    document.getElementById("gameswon").value = 1;
   }else{
-    document.getElementsByName("games.lost") = 1;
+    document.getElementById("gameslost").value = 1;
   } 
   alert("you have gotten " + points + " points, hit " + hit + " circles, and missed " + missed + "circles");
   //add points to some value in database
-  document.getElementByName("user_name") = user;
-  document.getElementByName("points") = points;
-  document.getElementByName("circles.hit") = hit;
-  document.getElementByName("circles.miss") = missed;
-  document.getElementByName("game").submit();
-  window.location.replace("/mainmenu");
+  document.getElementById("user_name").value = user;
+  document.getElementById("points").value = points;
+  document.getElementById("circleshit").value = hit;
+  document.getElementById("circlesmiss").value = missed;
+  document.getElementById("gameform").submit();
+  //window.location.replace("/mainmenu");
 }
 
 function handleClick(clicked){

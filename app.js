@@ -85,29 +85,31 @@ app.post('/users/login', (req, res) => {
     });
 });
 
-app.put('/users/stats', (req, res) => {
+app.post('/users/stats', (req, res) => {
     const requser = new User(req.body);
+    console.log(requser);
     User.findOne({
-        user_name: req.body.user_name
-    }, (err, user) => {
-        if (err) {
-            res.status(500).send({ message: err });
-            console.log(err);
-            return;
-        }
-        else if (!user) {
-            return res.status(404).send({ message: "User does not exist" });
-        }
-        else {
-            requser.save()
-            .then((result) => {
-                res.redirect('/mainmenu');
-            })
-            .catch((err) => {
+        user_name: requser.user_name
+    }, (err ,user) => {
+        User.updateOne({
+            user_name: requser.user_name
+        }, {
+            points: user.points + requser.points,
+            circleshit: user.circleshit + requser.circleshit,
+            circlesmiss: user.circlesmiss + requser.circlesmiss,
+            gameswon: user.gameswon + requser.gameswon,
+            gameslost: user.gameslost + requser.gameslost
+        }, (err, data) => {
+            if (err) {
                 console.log(err);
-            })
+            }
+            else{
+                console.log(data);
+            }
         }
+        );
     });
+    
 });
 
 
@@ -150,3 +152,25 @@ function setCookie(u,res) {
     var expires = "expires=" + p.toUTCString();
     res.cookie('user', u, { expires: p});
   }
+
+
+
+//   (err, user) => {
+//     if (err) {
+//         res.status(500).send({ message: err });
+//         console.log(err);
+//         return;
+//     }
+//     else if (!user) {
+//         return res.status(404).send({ message: "User does not exist" });
+//     }
+//     else {
+//         requser.save()
+//         .then((result) => {
+//             res.redirect('/mainmenu');
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         })
+//     }
+// });

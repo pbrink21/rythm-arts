@@ -27,14 +27,14 @@
           </div>
       </div>
         <div id = "game" class="gamediv">
-          <form name="game" action="/users/stats" method = "PUT">
-            <canvas id = "gameCanvas" width = "750" height = "750" style="border:1px solid #000000;"/>
-            <input name= "user_name" value= "">
-            <input name= "points" value=0>
-            <input name= "circles.hit" value=0>
-            <input name= "circles.miss" value=0>
-            <input name= "games.won" value=0>
-            <input name= "games.lost" value=0>
+          <canvas id = "gameCanvas" width = "750" height = "750" style="border:1px solid #000000;"/>
+          <form id="gameform" action="/users/stats" method = "POST">
+            <input id= "user_name" name= "user_name" value= "">
+            <input id= "points" name= "points" value=0>
+            <input id= "circleshit" name= "circleshit" value=0>
+            <input id= "circlesmiss" name= "circlesmiss" value=0>
+            <input id = "gameswon" name= "gameswon" value=0>
+            <input id = "gameslost" name= "gameslost" value=0>
           </form>
           <script Content-Type="text/javascript" src="./src/osu.js"></script>
         </div>
