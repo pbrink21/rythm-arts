@@ -85,6 +85,31 @@ app.post('/users/login', (req, res) => {
     });
 });
 
+app.put('/users/stats', (req, res) => {
+    const requser = new User(req.body);
+    User.findOne({
+        user_name: req.body.user_name
+    }, (err, user) => {
+        if (err) {
+            res.status(500).send({ message: err });
+            console.log(err);
+            return;
+        }
+        else if (!user) {
+            return res.status(404).send({ message: "User does not exist" });
+        }
+        else {
+            requser.save()
+            .then((result) => {
+                res.redirect('/mainmenu');
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        }
+    });
+});
+
 
 
 app.get('/', (req, res) => {

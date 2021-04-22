@@ -15,17 +15,17 @@ const userSchema = new Schema({
         type: Number,
         default: 0
     },
-    perks: {
+    perks: { // [perk]
         type: [Boolean],
-        default: [0,0,0,0,0,0,0,0,0]
+        default: [false, false, false, false, false, false, false, false, false]
     },
-    circles: {
-        hit: Number,
-        miss: Number
+    circles: { // [hit, miss]
+        type: [Number],
+        default: [0,0]
     },
-    games: {
-        won: Number,
-        lost: Number
+    games: { // [won, lost]
+        type: [Number],
+        default: [0,0]
     }
 }, {timestamps: true});
 
