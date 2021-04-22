@@ -1,30 +1,25 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const User = require('./models/user');
+const express = require('express'); 
+const mongoose = require('mongoose'); 
+const User = require('./models/user'); //model init
 
-const app = express();
+const app = express(); //server init
 
+//database init
+//user: team1
+//pass: team1COMS 
 const db_uri = 'mongodb+srv://team1:team1COMS@cluster0.o5usw.mongodb.net/RhythmArts?retryWrites=true&w=majority';
 mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => console.log("Connected to the database!"), app.listen(3000))
-    .catch((err) => console.log(err));
-
-function setCookie(u,res) {
-    var p = new Date();
-    p.setTime(p.getTime() + (3 * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + p.toUTCString();
-    res.cookie('user', u, { expires: p});
-  }
+    .catch((err) => console.log(err)); 
 
 app.set('view engine', 'ejs');
 app.set('views', 'public');
 
-
-
+//setting path for serving files
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 
-
+//get all users
 app.get('/users', (req, res) => {
     User.find()
         .then((result) => {
@@ -36,6 +31,7 @@ app.get('/users', (req, res) => {
         });
 });
 
+//add a new user
 app.post('/users', (req, res) => {
     const newuser = new User(req.body);
 
@@ -45,7 +41,7 @@ app.post('/users', (req, res) => {
         if (err) {
             console.log(err);
             return;
-        } else if (user == null) {
+        } else if (user == null) { //if username not taken
             newuser.save()
                 .then((result) => {
                     res.redirect('/mainmenu');
@@ -54,23 +50,14 @@ app.post('/users', (req, res) => {
                     console.log(err);
                 })
         }
-
-        else if (user.user_pass != newuser.user_pass) {
-            newuser.save()
-                .then((result) => {
-                    res.redirect('/mainmenu');
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-        } else {
+         else { //if username taken
             res.redirect('/signup');
         }
     });
 });
 
 
-
+//login with an existing user
 app.post('/users/login', (req, res) => {
     const newuser = new User(req.body);
     console.log(req.body.user_pass);
@@ -130,3 +117,11 @@ app.get('/game', (req, res) => {
 app.get('/board', (req, res) => {
     res.render('board');
 });
+
+
+function setCookie(u,res) {
+    var p = new Date();
+    p.setTime(p.getTime() + (3 * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + p.toUTCString();
+    res.cookie('user', u, { expires: p});
+  }
