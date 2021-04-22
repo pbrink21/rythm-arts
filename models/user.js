@@ -10,6 +10,22 @@ const userSchema = new Schema({
     user_pass: {
         type: String,
         required: true
+    },
+    points: {
+        type: Number,
+        default: 0
+    },
+    perks: {
+        type: [Boolean],
+        default: [0,0,0,0,0,0,0,0,0]
+    },
+    circles: {
+        hit: Number,
+        miss: Number
+    },
+    games: {
+        won: Number,
+        lost: Number
     }
 }, {timestamps: true});
 
