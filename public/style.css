@@ -229,9 +229,9 @@ d:hover {
 .grid-container {
   position: fixed;
   top: 40%;
-  right: 37%;
+  right: 50%;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   background-color: #bf1f66;
   padding: 10px;
 }
@@ -347,4 +347,8 @@ d:hover {
   padding: 5px;
   width: 80%;
   left: 10%;
+}
+
+.overcontainer{
+  right: 50%;
 }

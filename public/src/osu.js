@@ -144,7 +144,7 @@ function resume(){
 }
 
 function stop(){
-  alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + "circles");
+  alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + " circles");
   //add points to some value in database
   window.location.replace("/mainmenu");
 }
