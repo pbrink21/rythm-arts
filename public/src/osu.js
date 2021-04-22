@@ -146,6 +146,9 @@ function resume(){
 }
 
 function stop(){
+<<<<<<< HEAD
+  alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + " circles");
+=======
   console.log("game stopped");
   console.log(hit + " hits");
   console.log(totalCircles + " circles");
@@ -155,6 +158,7 @@ function stop(){
     document.getElementById("gameslost").value = 1;
   } 
   alert("you have gotten " + points + " points, hit " + hit + " circles, and missed " + missed + "circles");
+>>>>>>> refs/remotes/origin/master
   //add points to some value in database
   document.getElementById("user_name").value = user;
   document.getElementById("points").value = points;

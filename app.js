@@ -1,16 +1,16 @@
-const express = require('express'); 
-const mongoose = require('mongoose'); 
+const express = require('express');
+const mongoose = require('mongoose');
 const User = require('./models/user'); //model init
 
 const app = express(); //server init
 
 //database init
 //user: team1
-//pass: team1COMS 
+//pass: team1COMS
 const db_uri = 'mongodb+srv://team1:team1COMS@cluster0.o5usw.mongodb.net/RhythmArts?retryWrites=true&w=majority';
 mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => console.log("Connected to the database!"), app.listen(3000))
-    .catch((err) => console.log(err)); 
+    .catch((err) => console.log(err));
 
 app.set('view engine', 'ejs');
 app.set('views', 'public');
@@ -125,7 +125,14 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/shop', (req, res) => {
-    res.render('shop page');
+  User.find()
+      .then((result) => {
+          res.render('shop page', {users: result});
+      })
+      .catch((err) => {
+          console.log('---All-USERS---');
+          console.log(err);
+      });
 });
 
 app.get('/mainmenu', (req, res) => {
@@ -152,25 +159,4 @@ function setCookie(u,res) {
     var expires = "expires=" + p.toUTCString();
     res.cookie('user', u, { expires: p});
   }
-
-
-
-//   (err, user) => {
-//     if (err) {
-//         res.status(500).send({ message: err });
-//         console.log(err);
-//         return;
-//     }
-//     else if (!user) {
-//         return res.status(404).send({ message: "User does not exist" });
-//     }
-//     else {
-//         requser.save()
-//         .then((result) => {
-//             res.redirect('/mainmenu');
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         })
-//     }
-// });
+  
