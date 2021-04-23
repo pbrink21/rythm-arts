@@ -36,14 +36,26 @@ d:hover {
 
 .mainbackground {
 	background-image: url('https://i.pinimg.com/originals/5a/64/63/5a6463e51b284bfcbc34869dc72cf0cd.gif');
-	background-size:100%;
-	background-repeat:repeat;
+	background-size: 100%;
+	background-repeat: repeat;
 }
 
 .levelBackground {
 	background-image: url('https://i.pinimg.com/originals/fa/dc/b2/fadcb24075acb650de29f258af69d830.gif');
-	background-size:100%;
-	background-repeat:repeat;
+	background-size: 100%;
+	background-repeat: repeat;
+}
+
+.leaderboardBackground {
+  background-image: url('https://steamuserimages-a.akamaihd.net/ugc/794238861433329050/0BBF5155BAA4CF943C683701E86178CA3E25A84E/');
+	background-size: 100%;
+	background-repeat: repeat;
+}
+
+.shopBackground {
+  background-image: url('https://media.giphy.com/media/3o6Zt4j96fDG4XzO0w/giphy.gif');
+	background-size: 100%;
+	background-repeat: repeat;
 }
 
 .accountbtn{
