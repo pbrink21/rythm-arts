@@ -8,8 +8,7 @@ points = 0,
 user = "",
 hit = 0,
 missed = 0,
-misClicked = 0,
-numCircles = 3,
+numCircles = 20,
 totalCircles = numCircles,
 elements = [];
 
@@ -57,7 +56,7 @@ const colors = {
 };
 
 const DIFFICULTY = {
-  0: {size: 50, acceleration: 1, points: 1, interval: 10},
+  0: {size: 50, acceleration: 10, points: 1, interval: 10},
   1: {size: 40, acceleration: 5, points: 2, interval: 7},
   2: {size: 30, acceleration: 7, points: 3, interval: 5},
 };
@@ -76,29 +75,34 @@ const DIRECTION = {
 
 function start(){
   started = true;
-  generate();
+  //generate X number of circles
+  generate(totalCircles);
+  //draw background for game
   context.fillStyle = colors[theme].background;
   context.rect(0, 0, elem.width, elem.height);
   context.fill();
-  elements.forEach(function(element){
-    draw(element.x, element.y, element.radius, element.color);
-  });
+  
+  //create a new ball every second
   var sn = setInterval(function(){
-    iterate();
-    if(elements.length == 0){
-      generate();
-      numCircles--;
-    }
-    if(numCircles <= 0){
-      console.log("hit");
-      clearInterval(sn);
-      stop();
-    }
-  }, DIFFICULTY[diff].interval);
+    var element = elements.pop();
+    //iterate method needs to be redone?
+    iterate(element);
+
+    //sn1(element);
+  }, 1000);
+
+  //this interval should handle the movement of the ball. movement happens every frame
+  //17 ms is roughly 60fps
+  var sn1 = setInterval(function(){
+    
+  }, 17);
+
+  
 }
 
-function iterate(){
-  elements.forEach(function(element){
+
+
+function iterate(element){
     var pos = {
       x: element.direction.winX,
       y: element.direction.winY
@@ -111,13 +115,10 @@ function iterate(){
     //stores data for previous circle
     element.previous.x = element.x;
     element.previous.y = element.y;
-    element.previous.radius = element.radius + 5;
+    draw(element.previous.x, element.previous.y, element.previous.radius, colors[theme].background);
     //moves circle forward
     element.x = element.x + (element.direction.x * element.speed);
     element.y = element.y + (element.direction.y * element.speed);
-    //erases old Circles
-    draw(element.previous.x, element.previous.y, element.previous.radius, colors[theme].background);
-    //prints new Circles
     draw(element.x, element.y, element.radius, element.color);
 
     if((!intersect(pos, element) && element.ready) || element.clicked){
@@ -129,7 +130,6 @@ function iterate(){
       draw(element.x, element.y, element.radius, colors[theme].background);
       elements.splice(elements.indexOf(element));
     }
-  });
 }
 
 function pause(){
@@ -146,9 +146,6 @@ function resume(){
 }
 
 function stop(){
-<<<<<<< HEAD
-  alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + " circles");
-=======
   console.log("game stopped");
   console.log(hit + " hits");
   console.log(totalCircles + " circles");
@@ -158,7 +155,6 @@ function stop(){
     document.getElementById("gameslost").value = 1;
   } 
   alert("you have gotten " + points + " points, hit " + hit + " circles, and missed " + missed + "circles");
->>>>>>> refs/remotes/origin/master
   //add points to some value in database
   document.getElementById("user_name").value = user;
   document.getElementById("points").value = points;
@@ -196,23 +192,25 @@ function draw(x, y, r, c){
   context.fill();
 }
 
-function generate(){
-  elements.push({
-    color: colors[theme][Math.floor(Math.random() * colors[theme].numColors)],
-    radius: DIFFICULTY[diff].size,
-    x: elem.width/2,
-    y: elem.height/2,
-    speed: DIFFICULTY[diff].acceleration,
-    ready: false,
-    clicked: false,
-    direction: DIRECTION[Math.floor(Math.random() * 4)],
-    previous: {
+function generate(totalCircles){
+  for(var i = 0; i < totalCircles; i++){
+    elements.push({
+      color: colors[theme][Math.floor(Math.random() * colors[theme].numColors)],
+      radius: DIFFICULTY[diff].size,
       x: elem.width/2,
       y: elem.height/2,
-      radius: DIFFICULTY[diff].acceleration + 5,
-      dir: this.direction,
-    }
-  });
+      speed: DIFFICULTY[diff].acceleration,
+      ready: false,
+      clicked: false,
+      direction: DIRECTION[Math.floor(Math.random() * 4)],
+      previous: {
+        x: elem.width/2,
+        y: elem.height/2,
+        radius: DIFFICULTY[diff].acceleration + 5,
+        dir: this.direction,
+      }
+    });
+  }
 }
 
 function getCookie(cname) {
