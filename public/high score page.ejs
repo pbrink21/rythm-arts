@@ -23,6 +23,17 @@
         
       </div>
       <div id="game bar" class= "bottombar"></div>
+
+      <audio id="audio" src="sounds\otherPagesMusic.mp3"></audio>
+
+      <script>
+        document.addEventListener('click', musicPlay);
+        function musicPlay() {
+    	    document.getElementById('audio').play();
+    		  document.removeEventListener('click', musicPlay);
+        }
+      <script>
+
         <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
         <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
         <script src="bundle.js"></script>

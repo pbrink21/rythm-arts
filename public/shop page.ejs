@@ -17,6 +17,16 @@
       </ul>
     </div>
 
+    <audio id="audio" src="sounds\otherPagesMusic.mp3"></audio>
+
+    <script>
+      document.addEventListener('click', musicPlay);
+      function musicPlay() {
+    	  document.getElementById('audio').play();
+    		document.removeEventListener('click', musicPlay);
+      }
+    <script>
+
 <<<<<<< HEAD
       </div>
       <div class="overcontainer">
@@ -35,6 +45,7 @@
         </div>
       </div>
         <div id="game bar" class= "bottombar"></div>
+
 <script>
     var user = document.getCookie("user");
     var users = <%= users %>; //TODO: get points value from DB

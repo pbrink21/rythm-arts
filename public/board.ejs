@@ -31,5 +31,16 @@
           <script Content-Type="text/javascript" src="./src/osu.js"></script>
         </div>
         <div id = "butt" class="bottombar"> Press Space to Pause or Resume </div>
+
+      <audio id="audio" src="sounds\gameMusic.mp3"></audio>
+
+      <script>
+        document.addEventListener('click', musicPlay);
+        function musicPlay() {
+    	    document.getElementById('audio').play();
+    		  document.removeEventListener('click', musicPlay);
+        }
+      <script>
+      
     </body>
 </html>
