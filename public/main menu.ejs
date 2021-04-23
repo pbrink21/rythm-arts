@@ -43,14 +43,14 @@
     </div>
   </div>
 
-  <audio id="audio" src="lobbyMusic.mp3"></audio>
+  <audio id="audio" src="sound\lobbyMusic.mp3"></audio>
 
   <script>
-    //document.addEventListener('click', musicPlay);
-    //function musicPlay() {
-    //	 document.getElementById('audio').play();
-    //		document.removeEventListener('click', musicPlay);
-    //}
+    document.addEventListener('click', musicPlay);
+    function musicPlay() {
+    	 document.getElementById('audio').play();
+    		document.removeEventListener('click', musicPlay);
+    }
 
     function myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");
