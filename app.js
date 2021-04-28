@@ -142,7 +142,6 @@ app.get('/mainmenu', (req, res) => {
 });
 
 app.get('/highscore', (req, res) => {
-<<<<<<< HEAD
     User.find({}, function(err, users){
         console.log(users)
         res.render('high score page', {          
@@ -155,9 +154,7 @@ app.get('/highscore', (req, res) => {
 /*
 app.get('/highscore', (req, res) => {
     User.findOne({user_name: 'was'}, function(err, users){
-=======
     User.findOne({ user_name: 'was' }, function (err, users) {
->>>>>>> 667fa20d58335535a530803c65ffac22ca4039d7
         console.log(users)
         res.render('high score page', {
             users
