@@ -147,6 +147,13 @@ function stop() {
   //alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + " circles");
   //add points to some value in database
 
+//updates points cookie
+  var p = new Date();
+  p.setTime(p.getTime() + (3 * 24 * 60 * 60 * 1000));
+  var expires = "expires=" + p.toUTCString();
+  var l = points + parseInt(getCookie("points"));
+  document.cookie = "points=" + l + ";" + expires + "path=/";
+
   missed = Math.max(missed - morelives, 0);
   document.getElementById("user_name").value = user;
   document.getElementById("points").value = points;

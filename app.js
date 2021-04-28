@@ -122,8 +122,6 @@ app.post('/users/stats', (req, res) => {
         }
         );
     });
-    setCookie(user, res);
-    currUser = user.user_name;
     res.redirect('/mainmenu');
 });
 
@@ -193,5 +191,11 @@ function deleteCookie(res) {
   var p = new Date();
   p.setTime(p.getTime() - (3 * 24 * 60 * 60 * 1000)); //sets cookie experation date to 5 days before today
   res.cookie('user', "l", {expires: p});
+  res.cookie('ball', "l", {expires: p});
+  res.cookie('diff', "l", {expires: p});
+  res.cookie('points', "l", {expires: p});
+  res.cookie('saves', "l", {expires: p});
+  res.cookie('theme', "l", {expires: p});
+  res.cookie('time', "l", {expires: p});
   //document.cookie = cname + "=expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
