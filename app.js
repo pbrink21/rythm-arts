@@ -150,6 +150,7 @@ app.get('/mainmenu', (req, res) => {
 
 app.get('/highscore', (req, res) => {
     User.find({}, function(err, users){
+        
         console.log(users)
         res.render('high score page', {
         users:users, currUser
@@ -157,6 +158,55 @@ app.get('/highscore', (req, res) => {
     })
 });
 
+app.get('/sort/Points', (req, res) => {
+    User.find({}, function(err, users){
+      users.sort(function(userA, userB){return userB.points-userA.points})
+        console.log(users)
+        res.render('high score page', {
+        users:users, currUser
+        })
+    })
+});
+
+app.get('/sort/Hits', (req, res) => {
+    User.find({}, function(err, users){
+      users.sort(function(userA, userB){return userB.circleshit-userA.circleshit})
+        console.log(users)
+        res.render('high score page', {
+        users:users, currUser
+        })
+    })
+});
+
+app.get('/sort/Misses', (req, res) => {
+    User.find({}, function(err, users){
+      users.sort(function(userA, userB){return userB.circlesmiss-userA.circlesmiss})
+        console.log(users)
+        res.render('high score page', {
+        users:users, currUser
+        })
+    })
+});
+
+app.get('/sort/Wins', (req, res) => {
+    User.find({}, function(err, users){
+      users.sort(function(userA, userB){return userB.gameswon-userA.gameswon})
+        console.log(users)
+        res.render('high score page', {
+        users:users, currUser
+        })
+    })
+});
+
+app.get('/sort/Ratio', (req, res) => {
+    User.find({}, function(err, users){
+      users.sort(function(userA, userB){return (parseFloat(userB.gameswon / (userB.gameslost>0 ? userB.gameslost : 1)).toFixed(2) - parseFloat(userA.gameswon / (userA.gameslost>0 ? userA.gameslost : 1)).toFixed(2))})
+        console.log(users)
+        res.render('high score page', {
+        users:users, currUser
+        })
+    })
+});
 //OLD USER DATA RENDER
 /*
 app.get('/highscore', (req, res) => {

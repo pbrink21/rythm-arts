@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Hi-Score</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/style.css">
     </head>
     <body class="leaderboardBackground">
       <div id="menu bar" class= "topnav">
@@ -35,16 +35,28 @@
         <p id="numslows" class="displayperks"></p>
         <p id="numballs" class="displayperks"></p>
       </div>
-      <%users.forEach(users => {%>
-        <div id = "container" <% if(users.user_name == currUser) {%> class = "currentUser" <% } %>>
-          <div class = "leaderboard">Username: <%= users.user_name %></div>
-          <div class = "leaderboard">Player Points: <%= users.points %></div>
-          <div class = "leaderboard">Circles Hit: <%= users.circleshit %></div>
-          <div class = "leaderboard">Circles Missed: <%= users.circlesmiss %></div>
-          <div class = "leaderboard">Games Won: <%= users.gameswon %></div>
-        </div>
-      <%})%>
 
+<table>
+      <tr id = "container">
+        <th class = "leaderboard"> <a class="hiHeader" href = "/hiscore">Username</a></th>
+        <th class = "leaderboard"> <a class="hiHeader" href = "/sort/Points">Player Points</a></th>
+        <th class = "leaderboard"> <a class="hiHeader" href = "/sort/Hits">Circles Hit</a></th>
+        <th class = "leaderboard"> <a class="hiHeader" href = "/sort/Misses">Circles Missed</a></th>
+        <th class = "leaderboard"> <a class="hiHeader" href = "/sort/Wins">Games Won</a></th>
+        <th class = "leaderboard"> <a class="hiHeader" href = "/sort/Ratio">W/L Ratio</a></th>
+      </tr>
+
+      <%users.forEach(users => {%>
+        <tr id = "container" <% if(users.user_name == currUser) {%> class = "currentUser" <% } %>>
+          <td class = "leaderboard"><%= users.user_name %></td>
+          <td class = "leaderboard"><%= users.points %></td>
+          <td class = "leaderboard"><%= users.circleshit %></td>
+          <td class = "leaderboard"><%= users.circlesmiss %></td>
+          <td class = "leaderboard"><%= users.gameswon %></td>
+          <td class = "leaderboard"><%= parseFloat(users.gameswon / (users.gameslost>0 ? users.gameslost : 1)).toFixed(2) %></td>
+        </tr>
+      <%})%>
+</table>
       <div id="game bar" class= "bottombar"></div>
 
       <audio id="audio" src="..sounds\otherPagesMusic.mp3"></audio>

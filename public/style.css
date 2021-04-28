@@ -439,12 +439,7 @@ left: 10%;
   border: 2px solid red;
 }
 
-.leaderboard{
-  padding: 10px;
-  margin: auto;
-  display: inline-block;
-  border: 2px solid floralwhite;
-}
+
 
 .displayperks{
   right: 50%;
@@ -466,6 +461,12 @@ left: 10%;
   margin: auto;
   display: inline-block;
   border: none;
+}
+
+.leaderboard{
+  padding: 10px;
+  margin: auto;
+  border: 2px solid floralwhite;
 }
 
 select {
