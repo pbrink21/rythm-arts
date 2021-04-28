@@ -21,14 +21,15 @@
 <body style="background-image: url('/images/logo_black.jpg');">
     <div class="login" style="height: 260px">
         <x class="login-title" style="left: 34%">Signup</x>
-        <form action="/users" method= "POST">
+        <form action="/users" method="POST">
             <div class="login-header">
                 <x style="padding-right: 10px">Username</x>
                 <input id="user_name" name="user_name" placeholder="Enter Username" value="" required>
             </div>
             <div class="login-header">
                 <x style="padding-right: 16px">Password</x>
-                <input type="password" id="user_pass" name="user_pass" placeholder="Enter Password" onkeyup="check()" required>
+                <input type="password" id="user_pass" name="user_pass" placeholder="Enter Password" onkeyup="check()"
+                    required>
             </div>
             <div class="login-header">
                 <input style="position: relative; left: 30%;" type="password" id="confirm_password"
@@ -39,7 +40,7 @@
                 <input type="submit" class="signup-button" style="background-color: limegreen;" value="Confirm Signup">
             </div>
         </form>
-        
+
     </div>
 
     <!--<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>

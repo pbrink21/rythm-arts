@@ -50,7 +50,7 @@ app.post('/users', (req, res) => {
                     console.log(err);
                 })
         }
-         else { //if username taken
+        else { //if username taken
             res.redirect('/signup');
         }
     });
@@ -80,7 +80,7 @@ app.post('/users/login', (req, res) => {
         }
         else if (user.user_pass == newuser.user_pass) {
             console.log("USERNAME" + user.user_name);
-            setCookie(user,res);
+            setCookie(user, res);
             res.redirect('/mainmenu');
         } else {
             return res.status(401).send({ message: "Wrong Password" });
@@ -94,7 +94,7 @@ app.post('/users/stats', (req, res) => {
     console.log(requser);
     User.findOne({
         user_name: requser.user_name
-    }, (err ,user) => {
+    }, (err, user) => {
         if (err) {
             console.log(err);
             return;
@@ -111,13 +111,13 @@ app.post('/users/stats', (req, res) => {
             if (err) {
                 console.log(err);
             }
-            else{
+            else {
                 console.log(data);
             }
         }
         );
     });
-    
+
 });
 
 
@@ -142,10 +142,10 @@ app.get('/mainmenu', (req, res) => {
 });
 
 app.get('/highscore', (req, res) => {
-    User.findOne({user_name: 'was'}, function(err, users){
+    User.findOne({ user_name: 'was' }, function (err, users) {
         console.log(users)
-        res.render('high score page', {          
-        users
+        res.render('high score page', {
+            users
         })
     })
 });
@@ -159,12 +159,11 @@ app.get('/board', (req, res) => {
 });
 
 
-function setCookie(u,res) {
+function setCookie(u, res) {
     var p = new Date();
     p.setTime(p.getTime() + (3 * 24 * 60 * 60 * 1000));
     var expires = "expires=" + p.toUTCString();
-    res.cookie('user', u.user_name, { expires: p});
-    res.cookie('points', u.points, {expires: p});
+    res.cookie('user', u.user_name, { expires: p });
+    res.cookie('points', u.points, { expires: p });
 
-  }
-  
+}

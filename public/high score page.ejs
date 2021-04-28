@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Hi-Score</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body class="leaderboardBackground">
-      <div id="menu bar" class= "topnav">
-          <div class="topnav-centered">
-            <ul>
-              <li><a class="navButton" href="/mainmenu">Game</a></li>
-              <li><a class="active" href="/highscore">Hi-Score</a></li>
-              <li><a class="navButton" href="/shop">Shop</a></li>
-            </ul>
-          </div>  
 
-          <div>
-            <a class="accountbtn" href="/">Account</a>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <title>Hi-Score</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-          <img src="/images/logo_cropped.png" width= "300px" height= "60px" class="ripoff">
-        
-      </div>
+<body class="leaderboardBackground">
+  <div id="menu bar" class="topnav">
+    <div class="topnav-centered">
+      <ul>
+        <li><a class="navButton" href="/mainmenu">Game</a></li>
+        <li><a class="active" href="/highscore">Hi-Score</a></li>
+        <li><a class="navButton" href="/shop">Shop</a></li>
+      </ul>
+    </div>
 
-      <div id = "container">     
-        <div><p>Username: <%= users.user_name %></p></div>
-        <div><p>Player Points: <%= users.points %></p></div>
-        <div><p>Circles Hit: <%= users.circleshit %></p></div>
-      </div>  
+    <div>
+      <a class="accountbtn" href="/">Account</a>
+    </div>
 
-      <div id="game bar" class= "bottombar"></div>
+    <img src="/images/logo_cropped.png" width="300px" height="60px" class="ripoff">
 
-      <audio id="audio" src="sounds\otherPagesMusic.mp3"></audio>
+  </div>
 
-      <script>
-        document.addEventListener('click', musicPlay);
-        function musicPlay() {
-    	    document.getElementById('audio').play();
-    		  document.removeEventListener('click', musicPlay);
-        }
-      </script>
+  <div id="container">
+    <div>
+      <p>Username: <%= users.user_name %>
+      </p>
+    </div>
+    <div>
+      <p>Player Points: <%= users.points %>
+      </p>
+    </div>
+    <div>
+      <p>Circles Hit: <%= users.circleshit %>
+      </p>
+    </div>
+  </div>
 
-        <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
-        <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
-        <script src="bundle.js"></script>
-    </body>
+  <div id="game bar" class="bottombar"></div>
+
+  <audio id="audio" src="sounds\otherPagesMusic.mp3"></audio>
+
+  <script>
+    document.addEventListener('click', musicPlay);
+    function musicPlay() {
+      document.getElementById('audio').play();
+      document.removeEventListener('click', musicPlay);
+    }
+  </script>
+
+  <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+  <script src="bundle.js"></script>
+</body>
+
 </html>
