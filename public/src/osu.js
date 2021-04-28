@@ -4,12 +4,15 @@ var elem = document.getElementById('gameCanvas'),
   paused = false,
   theme = "Default",
   diff = 0,
+  morelives = morelives = getCookie("saves"),
+  timeslow = 1 - (getCookie("time") * 0.1),
+  largerBalls = 1 + (getCookie("ball") * 0.16),
   points = 0,
   user = "",
   hit = 0,
   missed = 0,
   misClicked = 0,
-  numCircles = 3,
+  numCircles = 10,
   totalCircles = numCircles,
   elements = [];
 
@@ -57,9 +60,9 @@ const colors = {
 };
 
 const DIFFICULTY = {
-  0: { size: 50, acceleration: 1, points: 10, interval: 10 },
-  1: { size: 40, acceleration: 5, points: 20, interval: 7 },
-  2: { size: 30, acceleration: 7, points: 30, interval: 5 },
+  0: { size: 30 * largerBalls, acceleration: 3 * timeslow, points: 10, interval: 10 },
+  1: { size: 30 * largerBalls, acceleration: 4.5 * timeslow, points: 20, interval: 7},
+  2: { size: 30 * largerBalls, acceleration: 6 * timeslow, points: 30, interval: 5},
 };
 
 const DIRECTION = {
@@ -75,6 +78,9 @@ const DIRECTION = {
 //deleteCookie("theme");
 
 function start() {
+  console.log(timeslow);
+  console.log(DIFFICULTY[1].acceleration);
+  console.log(DIFFICULTY[1].size);
   started = true;
   generate();
   context.fillStyle = colors[theme].background;
@@ -148,6 +154,8 @@ function resume() {
 function stop() {
   alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + " circles");
   //add points to some value in database
+  
+  missed = Math.max(missed - morelives, 0);
   document.getElementById("user_name").value = user;
   document.getElementById("points").value = points;
   document.getElementById("circleshit").value = hit;
@@ -239,6 +247,7 @@ document.addEventListener('keydown', function (event) {
         paused = true;
       }
     } else {
+
       start();
     }
   } else {

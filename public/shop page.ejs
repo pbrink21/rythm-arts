@@ -25,6 +25,7 @@
 
   </div>
   <div class="shop">
+
     <div style="float:left">
       <button id="saves1" value="100" class="shop-item" onClick="buy('saves', 1)">More Saves 1</button>
       <button id="saves2" value="200" class="shop-item" onClick="buy('saves', 2)">More Saves 2</button>
@@ -41,12 +42,6 @@
       <button id="ball1" value="100" class="shop-item" onClick="buy('ball', 1)">Larger Balls 1</button>
       <button id="ball2" value="200" class="shop-item" onClick="buy('ball', 2)">Larger Balls 2</button>
       <button id="ball3" value="400" class="shop-item" onClick="buy('ball', 3)">Larger Balls 3</button>
-    </div>
-
-
-
-    <div class="ownedperks">
-      
     </div>
   </div>
   
@@ -84,16 +79,12 @@
     function buy(perk, level) {
       var button = document.getElementById(perk + level);
       var owned = getCookie(perk);
-      console.log(perk + level);
-      console.log(owned);
+      
 
       if (owned >= level) {
         alert("That's silly. Why would you buy something you already have?");
       } else {
-        console.log("button value " + button.value);
-        console.log("points " + points);
-        console.log("T/F");
-        console.log(points > button.value);
+        
         if (eval(points > button.value)) {
           console.log("hit");
           points -= button.value;
