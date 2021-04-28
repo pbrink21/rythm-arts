@@ -69,27 +69,27 @@ d:hover {
 }
 
 .mainbackground {
-background-image: url('https://i.pinimg.com/originals/5a/64/63/5a6463e51b284bfcbc34869dc72cf0cd.gif');
-background-size: 100%;
-background-repeat: repeat;
+background-image: url('https://media.giphy.com/media/3oEdv0JVMEB0wNd8ju/giphy.gif');
+   background-repeat:no-repeat;
+   background-size:cover;
 }
 
 .levelBackground {
 background-image: url('https://i.pinimg.com/originals/fa/dc/b2/fadcb24075acb650de29f258af69d830.gif');
-background-size: 100%;
-background-repeat: repeat;
+background-size: cover;
+background-repeat: no-repeat;
 }
 
 .leaderboardBackground {
 background-image: url('https://steamuserimages-a.akamaihd.net/ugc/794238861433329050/0BBF5155BAA4CF943C683701E86178CA3E25A84E/');
-background-size: 100%;
-background-repeat: repeat;
+background-size: cover;
+background-repeat: no-repeat;
 }
 
 .shopBackground {
 background-image: url('https://media.giphy.com/media/3o6Zt4j96fDG4XzO0w/giphy.gif');
-background-size: 100%;
-background-repeat: repeat;
+background-size: cover;
+background-repeat: no-repeat;
 }
 
 .accountbtn{
@@ -256,7 +256,7 @@ clear: both;
  width: 100%;
  margin-top: 0;
 }
-}
+} 
 
 .topnav-centered ul {
 display: inline;
@@ -432,26 +432,18 @@ left: 10%;
   font-size: 24;
   position: absolute;
   top: 70%;
-  left: 30%;
+  left: 32.5%;
   margin-right: -50%;
   height: 100px;
-  width: 40%;
+  width: 35%;
   border: 2px solid red;
 }
 
-a.hiHeader:visited{
-  color: white;
-  background-color: transparent;
-}
-
-a.hiHeader:link{
-  color: white;
-  background-color: transparent;
-}
-
-a.hiHeader:hover{
-  color: #ff66aa;
-  background-color: transparent;
+.leaderboard{
+  padding: 10px;
+  margin: auto;
+  display: inline-block;
+  border: 2px solid floralwhite;
 }
 
 .displayperks{
@@ -463,41 +455,122 @@ a.hiHeader:hover{
   margin: 20px;
 }
 
-.currentUser{
-  background-color: #ff66aa;
-  padding: 10px;
-  border: 2px solid floralwhite;
+/*leaderboard styling*/
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.currUser .leaderboard{
-  padding: 10px;
-  margin: auto;
-  display: inline-block;
-  border: none;
+.wrapper{
+  width: 100%;
+  height: 100%;
 }
 
-.leaderboard{
-  padding: 10px;
-  margin: auto;
-  border: 2px solid floralwhite;
+.lboard_section{
+  width: 500px;
+  height: 400px;
+  margin: 100px auto 0;
+  background: #f94f62;
+  padding: 25px 40px;
+  position: relative;
+  border-radius: 5px;
 }
 
-select {
-  width: 10%;
-  padding: 16px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #ff66aa;
-  color: #f2f2f2;
-  font-size: 25px;
+.lboard_section .lboard_tabs ul{
+  display: flex;
 }
 
-.play {
-background-color: #4CAF50;
-color: white;
-padding: 12px 20px;
-border: none;
-font-size: 25px;
-border-radius: 4px;
-cursor: pointer;
+.lboard_section .lboard_tabs ul li{
+  margin-right: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #3a3d51;
+  cursor: pointer;
+}
+
+.lboard_section .lboard_tabs ul li:hover,
+.lboard_section .lboard_tabs ul li.active{
+  color: #fff;
+}
+
+.lboard_wrap{
+  position: absolute;
+  top: 70px;
+  left: 40px;
+  background: #ffd300;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.lboard_wrap .lboard_item{
+  padding: 25px;
+}
+
+.lboard_wrap .lboard_mem{
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #ffe773;
+}
+
+.lboard_wrap .lboard_mem:first-child{
+  padding-top: 0;
+}
+
+.lboard_wrap .lboard_mem:last-child{
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.lboard_wrap .lboard_mem .img{
+  width: 50px;
+}
+
+.lboard_wrap .lboard_mem img{
+  display: block;
+  width: 100%;
+}
+
+.lboard_wrap .lboard_mem .name_bar{
+  margin: 0 20px;
+  width: calc(100% - 150px);
+}
+
+.lboard_wrap .lboard_mem .name_bar p{
+  color: #3a3d51;
+}
+
+.lboard_wrap .lboard_mem .name_bar p span{
+  margin-right: 5px;
+}
+
+.lboard_wrap .lboard_mem .points{
+  width: 100px;
+  color: #3a3d51;
+}
+
+.lboard_wrap .lboard_mem .name_bar .bar_wrap{
+  width: 100%;
+  height: 5px;
+  background: #d5b000;
+  margin-top: 5px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lboard_wrap .lboard_mem .name_bar .bar_wrap .inner_bar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: #fff;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
