@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Board</title>
-        <link rel="stylesheet" href="style.css">
 
-    </head>
-    <body class="levelBackground">
-      <div id="menu bar" class= "topnav">
-          <div class="topnav-centered">
-            <ul>
-              <li><a class="active" href="/mainmenu">Game</a></li>
-              <li><a class="navButton" href="/highscore">Hi-Score</a></li>
-              <li><a class="navButton" href="/shop">Shop</a></li>
-            </ul>
-          </div>
-          <img src="/images/logo_cropped.png" width= "300px" height= "60px" class="ripoff">
+<head>
+  <meta charset="UTF-8">
+  <title>Board</title>
+  <link rel="stylesheet" href="style.css">
 
-      </div>
-        <div id = "game" class="gamediv">
-          <canvas id = "gameCanvas" width = "750" height = "750" style="border:1px solid #000000;"/>
-          <form id="gameform" action="/users/stats" method = "POST">
-            <input id= "user_name" name= "user_name" value= "">
-            <input id= "points" name= "points" value=0>
-            <input id= "circleshit" name= "circleshit" value=0>
-            <input id= "circlesmiss" name= "circlesmiss" value=0>
-            <input id = "gameswon" name= "gameswon" value=0>
-            <input id = "gameslost" name= "gameslost" value=0>
-          </form>
-          <script Content-Type="text/javascript" src="./src/osu.js"></script>
-        </div>
-        <div id = "butt" class="bottombar"> Press Space to Pause or Resume </div>
+</head>
 
-      <audio id="audio" src="sounds\gameMusic.mp3"></audio>
+<body class="levelBackground">
+  <div id="menu bar" class="topnav">
+    <div class="topnav-centered">
+      <ul>
+        <li><a class="active" href="/mainmenu">Game</a></li>
+        <li><a class="navButton" href="/highscore">Hi-Score</a></li>
+        <li><a class="navButton" href="/shop">Shop</a></li>
+      </ul>
+    </div>
+    <img src="/images/logo_cropped.png" width="300px" height="60px" class="ripoff">
 
-      <script>
-        document.addEventListener('click', musicPlay);
-        function musicPlay() {
-    	    document.getElementById('audio').play();
-    		  document.removeEventListener('click', musicPlay);
-        }
-      </script>
-      
-    </body>
+  </div>
+  <div id="game" class="gamediv">
+    <canvas id="gameCanvas" width="750" height="750" style="border:1px solid #000000;" />
+    <form id="gameform" action="/users/stats" method="POST">
+      <input id="user_name" name="user_name" value="">
+      <input id="points" name="points" value=0>
+      <input id="circleshit" name="circleshit" value=0>
+      <input id="circlesmiss" name="circlesmiss" value=0>
+      <input id="gameswon" name="gameswon" value=0>
+      <input id="gameslost" name="gameslost" value=0>
+    </form>
+    <script Content-Type="text/javascript" src="./src/osu.js"></script>
+  </div>
+  <div id="butt" class="bottombar"> Press Space to Pause or Resume </div>
+
+  <audio id="audio" src="sounds\gameMusic.mp3"></audio>
+
+  <script>
+    document.addEventListener('click', musicPlay);
+    function musicPlay() {
+      document.getElementById('audio').play();
+      document.removeEventListener('click', musicPlay);
+    }
+  </script>
+
+</body>
+
 </html>

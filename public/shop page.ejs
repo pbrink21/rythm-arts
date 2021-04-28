@@ -17,38 +17,34 @@
       </ul>
     </div>
 
-    <audio id="audio" src="...sounds\otherPagesMusic.mp3"></audio>
+    <div>
+      <a class="accountbtn" href="/">Account</a>
+    </div>
 
-    <script>
-      document.addEventListener('click', musicPlay);
-      function musicPlay() {
-        document.getElementById('audio').play();
-        document.removeEventListener('click', musicPlay);
-      }
-    </script>
+    <img src="/images/logo_cropped.png" width="300px" height="60px" class="ripoff">
 
   </div>
   <div class="overcontainer">
     <div class="shop">
-        <div style="float:left">
-          <button id="saves1" value="100" class="shop-item" onClick="buy('saves', 1)">More Saves 1</button>
-          <button id="saves2" value="200" class="shop-item" onClick="buy('saves', 2)">More Saves 2</button>
-          <button id="saves3" value="400" class="shop-item" onClick="buy('saves', 3)">More Saves 3</button>
-        </div>
+      <div style="float:left">
+        <button id="saves1" value="100" class="shop-item" onClick="buy('saves', 1)">More Saves 1</button>
+        <button id="saves2" value="200" class="shop-item" onClick="buy('saves', 2)">More Saves 2</button>
+        <button id="saves3" value="400" class="shop-item" onClick="buy('saves', 3)">More Saves 3</button>
+      </div>
 
-        <div style="float:left">
-          <button id="time1" value="100" class="shop-item" onClick="buy('time', 1)">Slow Time 1</button>
-          <button id="time2" value="200" class="shop-item" onClick="buy('time', 2)">Slow Time 2</button>
-          <button id="time3" value="400" class="shop-item" onClick="buy('time', 3)">Slow Time 3</button>
-        </div>
+      <div style="float:left">
+        <button id="time1" value="100" class="shop-item" onClick="buy('time', 1)">Slow Time 1</button>
+        <button id="time2" value="200" class="shop-item" onClick="buy('time', 2)">Slow Time 2</button>
+        <button id="time3" value="400" class="shop-item" onClick="buy('time', 3)">Slow Time 3</button>
+      </div>
 
-        <div style="float:left">
-          <button id="ball1" value="100" class="shop-item" onClick="buy('ball', 1)">Larger Balls 1</button>
-          <button id="ball2" value="200" class="shop-item" onClick="buy('ball', 2)">Larger Balls 2</button>
-          <button id="ball3" value="400" class="shop-item" onClick="buy('ball', 3)">Larger Balls 3</button>
-        </div>
-      
-      
+      <div style="float:left">
+        <button id="ball1" value="100" class="shop-item" onClick="buy('ball', 1)">Larger Balls 1</button>
+        <button id="ball2" value="200" class="shop-item" onClick="buy('ball', 2)">Larger Balls 2</button>
+        <button id="ball3" value="400" class="shop-item" onClick="buy('ball', 3)">Larger Balls 3</button>
+      </div>
+
+
     </div>
   </div>
   <div id="game bar" class="bottombar"></div>
@@ -77,14 +73,14 @@
     function buy(perk, level) {
       var button = document.getElementById(perk + level);
       var owned = getCookie(perk);
-      console.log(perk+level);
+      console.log(perk + level);
       console.log(owned);
 
       if (owned >= level) {
         alert("That's silly. Why would you buy something you already have?");
       } else {
-        console.log("button value " +button.value);
-        console.log("points " +points);
+        console.log("button value " + button.value);
+        console.log("points " + points);
         console.log("T/F");
         console.log(points > button.value);
         if (eval(points > button.value)) {

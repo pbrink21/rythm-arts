@@ -1,20 +1,20 @@
 var elem = document.getElementById('gameCanvas'),
-context = elem.getContext('2d'),
-started = false,
-paused = false,
-theme = "Default",
-diff = 0,
-points = 0,
-user = "",
-hit = 0,
-missed = 0,
-misClicked = 0,
-numCircles = 3,
-totalCircles = numCircles,
-elements = [];
+  context = elem.getContext('2d'),
+  started = false,
+  paused = false,
+  theme = "Default",
+  diff = 0,
+  points = 0,
+  user = "",
+  hit = 0,
+  missed = 0,
+  misClicked = 0,
+  numCircles = 3,
+  totalCircles = numCircles,
+  elements = [];
 
 const colors = {
-  "Default":{
+  "Default": {
     numColors: 4,
     success: "#B0F54D",
     background: "#FFFFFF",
@@ -24,7 +24,7 @@ const colors = {
     2: "#ffe0c0",
     3: "#338dd8"
   },
-  "Dawn Winery":{
+  "Dawn Winery": {
     numColors: 4,
     success: "#B0F54D",
     background: "#FFFFFF",
@@ -34,7 +34,7 @@ const colors = {
     2: "#ffe0c0",
     3: "#338dd8"
   },
-  "Hotto Dogu":{
+  "Hotto Dogu": {
     numColors: 4,
     success: "#B0F54D",
     background: "#FFFFFF",
@@ -44,7 +44,7 @@ const colors = {
     2: "#ffe0c0",
     3: "#338dd8"
   },
-  "Umbrella":{
+  "Umbrella": {
     numColors: 4,
     success: "#B0F54D",
     background: "#FFFFFF",
@@ -57,39 +57,39 @@ const colors = {
 };
 
 const DIFFICULTY = {
-  0: {size: 50, acceleration: 1, points: 10, interval: 10},
-  1: {size: 40, acceleration: 5, points: 20, interval: 7},
-  2: {size: 30, acceleration: 7, points: 30, interval: 5},
+  0: { size: 50, acceleration: 1, points: 10, interval: 10 },
+  1: { size: 40, acceleration: 5, points: 20, interval: 7 },
+  2: { size: 30, acceleration: 7, points: 30, interval: 5 },
 };
 
 const DIRECTION = {
-  0: {x: 0, y: -1, key: 'w', keyCode: 87, winX: elem.width/2, winY: 0}, //up
-  1: {x: -1, y: 0, key: 'a', keyCode: 65, winX: 0, winY: elem.height/2}, //left
-  2: {x: 0, y: 1, key: 's', keyCode: 83, winX: elem.width/2, winY: elem.height}, //down
-  3: {x: 1, y: 0, key: 'd', keyCode: 68, winX: elem.width, winY: elem.height/2}, //right
-  4: {x: 0, y: 0, key: 'q', keyCode: 81, winX: 0, winY: 0} //stopped
+  0: { x: 0, y: -1, key: 'w', keyCode: 87, winX: elem.width / 2, winY: 0 }, //up
+  1: { x: -1, y: 0, key: 'a', keyCode: 65, winX: 0, winY: elem.height / 2 }, //left
+  2: { x: 0, y: 1, key: 's', keyCode: 83, winX: elem.width / 2, winY: elem.height }, //down
+  3: { x: 1, y: 0, key: 'd', keyCode: 68, winX: elem.width, winY: elem.height / 2 }, //right
+  4: { x: 0, y: 0, key: 'q', keyCode: 81, winX: 0, winY: 0 } //stopped
 };
 
 // add to stop function
 //deleteCookie("diff");
 //deleteCookie("theme");
 
-function start(){
+function start() {
   started = true;
   generate();
   context.fillStyle = colors[theme].background;
   context.rect(0, 0, elem.width, elem.height);
   context.fill();
-  elements.forEach(function(element){
+  elements.forEach(function (element) {
     draw(element.x, element.y, element.radius, element.color);
   });
-  var sn = setInterval(function(){
+  var sn = setInterval(function () {
     iterate();
-    if(elements.length == 0){
+    if (elements.length == 0) {
       generate();
       numCircles--;
     }
-    if(numCircles <= 0){
+    if (numCircles <= 0) {
       console.log("hit");
       clearInterval(sn);
       stop();
@@ -97,14 +97,14 @@ function start(){
   }, DIFFICULTY[diff].interval);
 }
 
-function iterate(){
-  elements.forEach(function(element){
+function iterate() {
+  elements.forEach(function (element) {
     var pos = {
       x: element.direction.winX,
       y: element.direction.winY
     };
     //chagnes color, if neccesary
-    if(intersect(pos, element)){
+    if (intersect(pos, element)) {
       element.ready = true;
       element.color = colors[theme].success;
     }
@@ -120,9 +120,9 @@ function iterate(){
     //prints new Circles
     draw(element.x, element.y, element.radius, element.color);
 
-    if((!intersect(pos, element) && element.ready) || element.clicked){
+    if ((!intersect(pos, element) && element.ready) || element.clicked) {
       //missed circle
-      if(!element.clicked){
+      if (!element.clicked) {
         missed++;
       }
       //erases
@@ -132,76 +132,76 @@ function iterate(){
   });
 }
 
-function pause(){
-  elements.forEach(function(element){
+function pause() {
+  elements.forEach(function (element) {
     element.previous.dir = element.direction;
     element.direction = DIRECTION[4];
   })
 }
 
-function resume(){
-  elements.forEach(function(element){
+function resume() {
+  elements.forEach(function (element) {
     element.direction = element.previous.dir;
   })
 }
 
-function stop(){
+function stop() {
   alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + " circles");
   //add points to some value in database
   document.getElementById("user_name").value = user;
   document.getElementById("points").value = points;
   document.getElementById("circleshit").value = hit;
   document.getElementById("circlesmiss").value = missed;
-  if(totalCircles == hit){
+  if (totalCircles == hit) {
     document.getElementById("gameswon").value = 1;
-  }else {
+  } else {
     document.getElementById("gameslost").value = 1;
   }
   document.getElementById("gameform").submit();
   //window.location.replace("/mainmenu");
 }
 
-function handleClick(clicked){
+function handleClick(clicked) {
   var goodClick = false;
-  elements.forEach(function(element){
+  elements.forEach(function (element) {
     //succesful click
-    if((element.direction.keyCode == clicked && element.ready && !element.clicked)){
+    if ((element.direction.keyCode == clicked && element.ready && !element.clicked)) {
       goodClick = true;
       element.clicked = true;
       hit++;
       points += DIFFICULTY[diff].points;
     }
   });
-//incorrect click
-  if(!goodClick){
+  //incorrect click
+  if (!goodClick) {
     misClicked++;
   }
 }
 
-function intersect(point, circle){
-  return Math.sqrt((point.x-circle.x) ** 2 + (point.y-circle.y) ** 2) < circle.radius;
+function intersect(point, circle) {
+  return Math.sqrt((point.x - circle.x) ** 2 + (point.y - circle.y) ** 2) < circle.radius;
 }
 
-function draw(x, y, r, c){
+function draw(x, y, r, c) {
   context.fillStyle = c;
   context.beginPath();
   context.arc(x, y, r, 0, 2 * Math.PI);
   context.fill();
 }
 
-function generate(){
+function generate() {
   elements.push({
     color: colors[theme][Math.floor(Math.random() * colors[theme].numColors)],
     radius: DIFFICULTY[diff].size,
-    x: elem.width/2,
-    y: elem.height/2,
+    x: elem.width / 2,
+    y: elem.height / 2,
     speed: DIFFICULTY[diff].acceleration,
     ready: false,
     clicked: false,
     direction: DIRECTION[Math.floor(Math.random() * 4)],
     previous: {
-      x: elem.width/2,
-      y: elem.height/2,
+      x: elem.width / 2,
+      y: elem.height / 2,
       radius: DIFFICULTY[diff].acceleration + 5,
       dir: this.direction,
     }
@@ -212,7 +212,7 @@ function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
   var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
+  for (var i = 0; i < ca.length; i++) {
     var c = ca[i];
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
@@ -224,29 +224,29 @@ function getCookie(cname) {
   return "";
 }
 
-function deleteCookie(cname){
-  document.cookie=cname+"=expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+function deleteCookie(cname) {
+  document.cookie = cname + "=expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
-document.addEventListener('keydown', function(event) {
-  if(event.keyCode == 32){
-    if(started){
-      if(paused){
+document.addEventListener('keydown', function (event) {
+  if (event.keyCode == 32) {
+    if (started) {
+      if (paused) {
         resume();
         paused = false;
-      }else{
+      } else {
         pause();
         paused = true;
       }
-    }else{
+    } else {
       start();
     }
-  }else{
+  } else {
     handleClick(event.keyCode);
   }
 }, false);
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
   diff = getCookie("diff");
   theme = getCookie("theme");
   user = getCookie("user");
