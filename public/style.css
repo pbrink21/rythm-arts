@@ -239,21 +239,13 @@ d:hover {
 }
 
 .grid-container {
-  position: fixed;
+  position: relative;
   top: 40%;
   right: 50%;
   display: grid;
   grid-template-columns: auto auto auto auto;
   background-color: #bf1f66;
   padding: 10px;
-}
-
-.grid-item {
-  background-color: rgba(255, 102, 170, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
 }
 
 .gamediv {
@@ -361,6 +353,43 @@ d:hover {
   left: 10%;
 }
 
-.overcontainer{
-  right: 50%;
+.shop{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 400px;
+  padding: 10px;
+}
+
+.shop-column{
+  display: block;
+  background-color: rgba(255, 102, 170, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  margin: 10px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.login-header{
+  position: relative;
+  margin: 25px 10px 0px;
+}
+
+.login-buttons{
+  position: relative;
+  left: 10px;
+  top: -10px;
+  padding: 5px;
+  margin: 0px 10px;
+}
+
+.signup-button{
+  position: relative;
+  padding: 5px;
+  width: 80%;
+  left: 10%;
 }
