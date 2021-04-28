@@ -359,9 +359,8 @@ d:hover {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  width: 1000px;
-  height: 400px;
   padding: 10px;
+  border: 2px solid rgba(200, 0, 0, 0.8);
 }
 
 .shop-item{
@@ -374,22 +373,3 @@ d:hover {
   text-align: center;
 }
 
-.login-header{
-  position: relative;
-  margin: 25px 10px 0px;
-}
-
-.login-buttons{
-  position: relative;
-  left: 10px;
-  top: -10px;
-  padding: 5px;
-  margin: 0px 10px;
-}
-
-.signup-button{
-  position: relative;
-  padding: 5px;
-  width: 80%;
-  left: 10%;
-}

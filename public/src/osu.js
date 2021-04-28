@@ -57,9 +57,9 @@ const colors = {
 };
 
 const DIFFICULTY = {
-  0: {size: 50, acceleration: 1, points: 1, interval: 10},
-  1: {size: 40, acceleration: 5, points: 2, interval: 7},
-  2: {size: 30, acceleration: 7, points: 3, interval: 5},
+  0: {size: 50, acceleration: 1, points: 10, interval: 10},
+  1: {size: 40, acceleration: 5, points: 20, interval: 7},
+  2: {size: 30, acceleration: 7, points: 30, interval: 5},
 };
 
 const DIRECTION = {
@@ -153,7 +153,9 @@ function stop(){
   document.getElementById("circleshit").value = hit;
   document.getElementById("circlesmiss").value = missed;
   if(totalCircles == hit){
-    
+    document.getElementById("gameswon").value = 1;
+  }else {
+    document.getElementById("gameslost").value = 1;
   }
   document.getElementById("gameform").submit();
   //window.location.replace("/mainmenu");

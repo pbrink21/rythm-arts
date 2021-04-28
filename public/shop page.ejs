@@ -30,26 +30,25 @@
   </div>
   <div class="overcontainer">
     <div class="shop">
-      <form id="shop">
-        <div class="">
-          <button id="saves1" value="100" class="shop-item" onClick="buy(saves, 1)">More Saves 1</button>
-          <button id="saves2" value="200" class="shop-item" onClick="buy(saves, 2)">More Saves 2</button>
-          <button id="saves3" value="400" class="shop-item" onClick="buy(saves, 3)">More Saves 3</button>
-        </div>
-        
-        <div>
-          <button id="time1" value="100" class="shop-item" onClick="buy(time, 1)">Slow Time 1</button>
-          <button id="time2" value="200" class="shop-item" onClick="buy(time, 2)">Slow Time 2</button>
-          <button id="time3" value="400" class="shop-item" onClick="buy(time, 3)">Slow Time 3</button>
+        <div style="float:left">
+          <button id="saves1" value="100" class="shop-item" onClick="buy('saves', 1)">More Saves 1</button>
+          <button id="saves2" value="200" class="shop-item" onClick="buy('saves', 2)">More Saves 2</button>
+          <button id="saves3" value="400" class="shop-item" onClick="buy('saves', 3)">More Saves 3</button>
         </div>
 
-        <div>
-          <button id="ball1" value="100" class="shop-item" onClick="buy(ball, 1)">Larger Balls 1</button>
-          <button id="ball2" value="200" class="shop-item" onClick="buy(ball, 2)">Larger Balls 2</button>
-          <button id="ball3" value="400" class="shop-item" onClick="buy(ball, 3)">Larger Balls 3</button>
+        <div style="float:left">
+          <button id="time1" value="100" class="shop-item" onClick="buy('time', 1)">Slow Time 1</button>
+          <button id="time2" value="200" class="shop-item" onClick="buy('time', 2)">Slow Time 2</button>
+          <button id="time3" value="400" class="shop-item" onClick="buy('time', 3)">Slow Time 3</button>
         </div>
-        
-      </form>
+
+        <div style="float:left">
+          <button id="ball1" value="100" class="shop-item" onClick="buy('ball', 1)">Larger Balls 1</button>
+          <button id="ball2" value="200" class="shop-item" onClick="buy('ball', 2)">Larger Balls 2</button>
+          <button id="ball3" value="400" class="shop-item" onClick="buy('ball', 3)">Larger Balls 3</button>
+        </div>
+      
+      
     </div>
   </div>
   <div id="game bar" class="bottombar"></div>
@@ -71,36 +70,38 @@
       return "";
     }
 
+
     var user = getCookie("user");
-    console.log(user.points);
-    var points = 10000;
-    var u;
-
-    if (users.length == 0) {
-      console.log("no users grabbed");
-    } else {
-      users.array.forEach(element => {
-        console.log(l.user_name);
-        if (l.user_name = user) {
-          u = l;
-          points = l.points;
-        }
-      });
-    }
-
+    var points = getCookie("points");
 
     function buy(perk, level) {
-      var button = form.getElementById(perk+level);
-      if(points >= button.value){
-        points -= button.value;
-        var p = new Date();
-        p.setTime(p.getTime() + (3 * 24 * 60 * 60 * 1000));
-        var expires = "expires=" + p.toUTCString();
-        document.cookie = perk + "=" + level + ";" + expires + "path=/";
+      var button = document.getElementById(perk + level);
+      var owned = getCookie(perk);
+      console.log(perk+level);
+      console.log(owned);
+
+      if (owned >= level) {
+        alert("That's silly. Why would you buy something you already have?");
+      } else {
+        console.log("button value " +button.value);
+        console.log("points " +points);
+        console.log("T/F");
+        console.log(points > button.value);
+        if (eval(points > button.value)) {
+          console.log("hit");
+          points -= button.value;
+          var p = new Date();
+          p.setTime(p.getTime() + (3 * 24 * 60 * 60 * 1000));
+          var expires = "expires=" + p.toUTCString();
+          document.cookie = perk + "=" + level + ";" + expires + "path=/";
+          document.cookie = "points=" + points + ";" + expires + "path=/";
+        }
       }
+      //document.cookie = "points=10000" + ";" + expires + "path=/";
+      //document.cookie = perk + "=0" + ";" + expires + "path=/";
     }
 
-    
+
   </script>
 </body>
 

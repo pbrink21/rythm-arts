@@ -129,17 +129,7 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/shop', (req, res) => {
-       User.findOne({
-        user_name: req.body.user_name,
-    }, (err, user) => {
-        if (err) {
-            console.log(err);
-            return;
-        } else {
-            console.log(user);
-            //res.render('shop page', {users: user.user_name});
-        }
-    });
+    res.render('shop page');
 });
 
 app.get('/mainmenu', (req, res) => {
@@ -166,6 +156,6 @@ function setCookie(u,res) {
     var expires = "expires=" + p.toUTCString();
     res.cookie('username', u.user_name, { expires: p});
     res.cookie('points', u.points, {expires: p});
-    
+
   }
   
