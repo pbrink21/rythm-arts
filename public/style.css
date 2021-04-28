@@ -5,10 +5,17 @@
 #container {
 width: auto;
 height: auto;
-top: 50%;
 text-align: center;
+margin: 30px;
 font-size: 40px;
 color: white;
+}
+
+.leaderboard{
+  padding: 10px;
+  margin: auto;
+  display: inline-block;
+  border: 2px solid floralwhite;
 }
 
 .row {
@@ -268,6 +275,8 @@ padding: 0;
 padding-left: 10px;
 margin: 0;
 }
+
+
 
 .grid-container {
 position: relative;

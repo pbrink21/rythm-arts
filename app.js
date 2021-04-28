@@ -142,6 +142,17 @@ app.get('/mainmenu', (req, res) => {
 });
 
 app.get('/highscore', (req, res) => {
+    User.find({}, function(err, users){
+        console.log(users)
+        res.render('high score page', {          
+        users:users
+        })
+    })
+});
+
+//OLD USER DATA RENDER
+/*
+app.get('/highscore', (req, res) => {
     User.findOne({user_name: 'was'}, function(err, users){
         console.log(users)
         res.render('high score page', {          
@@ -149,6 +160,7 @@ app.get('/highscore', (req, res) => {
         })
     })
 });
+*/
 
 app.get('/game', (req, res) => {
     res.render('game page');
