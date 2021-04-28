@@ -14,27 +14,27 @@
               <li><a class="active" href="/highscore">Hi-Score</a></li>
               <li><a class="navButton" href="/shop">Shop</a></li>
             </ul>
-          </div>  
+          </div>
 
           <div>
             <a class="accountbtn" href="/">Account</a>
           </div>
-          
+
 
           <img src="/images/logo_cropped.png" width= "300px" height= "60px" class="ripoff">
-        
+
       </div>
-         
-      <%users.forEach(users => {%>   
-      <div id = "container">    
+
+      <%users.forEach(users => {%>
+      <div id = "container">
         <div class = "leaderboard">Username: <%= users.user_name %></div>
         <div class = "leaderboard">Player Points: <%= users.points %></div>
         <div class = "leaderboard">Circles Hit: <%= users.circleshit %></div>
         <div class = "leaderboard">Circles Missed: <%= users.circlesmiss %></div>
-        <div class = "leaderboard">Games Won: <%= users.gameswon %></div>  
-      </div>   
+        <div class = "leaderboard">Games Won: <%= users.gameswon %></div>
+      </div>
       <%})%>
-      
+
 
       <div id="game bar" class= "bottombar"></div>
 
@@ -47,9 +47,5 @@
     		  document.removeEventListener('click', musicPlay);
         }
       </script>
-
-        <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
-        <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
-        <script src="bundle.js"></script>
     </body>
 </html>

@@ -44,6 +44,7 @@ app.post('/users', (req, res) => {
         } else if (user == null) { //if username not taken
             newuser.save()
                 .then((result) => {
+                    setCookie(newuser, res);
                     res.redirect('/mainmenu');
                 })
                 .catch((err) => {
@@ -117,13 +118,14 @@ app.post('/users/stats', (req, res) => {
         }
         );
     });
-
+    res.redirect('/mainmenu');
 });
 
 
 
 app.get('/', (req, res) => {
     console.log("enter root route");
+    deleteCookie(res);
     res.render('landing page');
 
 });
@@ -144,7 +146,7 @@ app.get('/mainmenu', (req, res) => {
 app.get('/highscore', (req, res) => {
     User.find({}, function(err, users){
         console.log(users)
-        res.render('high score page', {          
+        res.render('high score page', {
         users:users
         })
     })
@@ -178,5 +180,11 @@ function setCookie(u, res) {
     var expires = "expires=" + p.toUTCString();
     res.cookie('user', u.user_name, { expires: p });
     res.cookie('points', u.points, { expires: p });
+}
 
+function deleteCookie(res) {
+  var p = new Date();
+  p.setTime(p.getTime() - (3 * 24 * 60 * 60 * 1000)); //sets cookie experation date to 5 days before today
+  res.cookie('user', "l", {expires: p});
+  //document.cookie = cname + "=expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }

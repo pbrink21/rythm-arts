@@ -18,7 +18,7 @@
     </div>
 
     <div>
-      <a class="accountbtn" href="/">Account</a>   
+      <a class="accountbtn" href="/">Account</a>
     </div>
 
     <div class = "pointsdisplay">
@@ -28,7 +28,7 @@
     <div class = "usernamedisplay">
       <p id = usernamedisplay></p>
     </div>
-    
+
 
     <img src="/images/logo_cropped.png" width="300px" height="60px" class="ripoff">
 
@@ -55,14 +55,14 @@
   </form>
 
 
-  
+
   </div>
-  <div class="ownedperks"> 
+  <div class="ownedperks">
     <p id="numsaves" class="displayperks"></p>
     <p id="numslows" class="displayperks"></p>
     <p id="numballs" class="displayperks"></p>
   </div>
-  
+
 
   <script>
     var user = getCookie("user");
@@ -71,13 +71,14 @@
     function buy(perk, level) {
       var button = document.getElementById(perk + level);
       var owned = getCookie(perk);
-      
+
 
       if (owned >= level) {
         alert("That's silly. Why would you buy something you already have?");
       } else {
-        
+
         if (eval(points > button.value)) {
+          alert("Spending money? your bank account won't be happpy");
           console.log("hit");
           points -= button.value;
           var p = new Date();
@@ -85,6 +86,8 @@
           var expires = "expires=" + p.toUTCString();
           document.cookie = perk + "=" + level + ";" + expires + "path=/";
           document.cookie = "points=" + points + ";" + expires + "path=/";
+        }else{
+          alert("That's silly, you're too poor");
         }
       }
       //document.cookie = "points=5000" + ";" + expires + "path=/";

@@ -18,44 +18,40 @@ var elem = document.getElementById('gameCanvas'),
 
 const colors = {
   "Default": {
-    numColors: 4,
-    success: "#B0F54D",
+    numColors: 2,
+    success: "#4CAF50",
     background: "#FFFFFF",
     text: "#000000",
-    0: "#603060",
-    1: "#a8b2ba",
-    2: "#ffe0c0",
-    3: "#338dd8"
+    0: "#ff66aa",
+    1: "#bf1f66",
   },
   "Dawn Winery": {
-    numColors: 4,
-    success: "#B0F54D",
-    background: "#FFFFFF",
+    numColors: 3,
+    success: "#cec591",
+    background: "#f4a680",
     text: "#000000",
-    0: "#603060",
-    1: "#a8b2ba",
-    2: "#ffe0c0",
-    3: "#338dd8"
+    0: "#6187a5",
+    1: "#896689",
+    2: "#cc7e81"
   },
   "Hotto Dogu": {
     numColors: 4,
-    success: "#B0F54D",
-    background: "#FFFFFF",
-    text: "#000000",
-    0: "#603060",
-    1: "#a8b2ba",
-    2: "#ffe0c0",
-    3: "#338dd8"
+    success: "#de4444",
+    background: "#464950",
+    text: "#FFFFFF",
+    0: "#3bca74",
+    1: "#a7d537",
+    2: "#e2a232",
+    3: "#933d82"
   },
   "Umbrella": {
-    numColors: 4,
-    success: "#B0F54D",
-    background: "#FFFFFF",
+    numColors: 3,
+    success: "#008cd0",
+    background: "#f8f9d4",
     text: "#000000",
-    0: "#603060",
-    1: "#a8b2ba",
-    2: "#ffe0c0",
-    3: "#338dd8"
+    0: "#f66555",
+    1: "#ffc66f",
+    2: "#3cccd0"
   },
 };
 
@@ -72,10 +68,6 @@ const DIRECTION = {
   3: { x: 1, y: 0, key: 'd', keyCode: 68, winX: elem.width, winY: elem.height / 2 }, //right
   4: { x: 0, y: 0, key: 'q', keyCode: 81, winX: 0, winY: 0 } //stopped
 };
-
-// add to stop function
-//deleteCookie("diff");
-//deleteCookie("theme");
 
 function start() {
   console.log(timeslow);
@@ -132,7 +124,7 @@ function iterate() {
         missed++;
       }
       //erases
-      draw(element.x, element.y, element.radius, colors[theme].background);
+      draw(element.x, element.y, element.radius + 5, colors[theme].background);
       elements.splice(elements.indexOf(element));
     }
   });
@@ -152,21 +144,26 @@ function resume() {
 }
 
 function stop() {
-  alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + " circles");
+  //alert("you have gotten " + points + " points, misclicked " + misClicked + " times, hit " + hit + " circles, and missed " + missed + " circles");
   //add points to some value in database
-  
+
   missed = Math.max(missed - morelives, 0);
   document.getElementById("user_name").value = user;
   document.getElementById("points").value = points;
   document.getElementById("circleshit").value = hit;
   document.getElementById("circlesmiss").value = missed;
   if (totalCircles == hit) {
+    alert("you have won the game");
     document.getElementById("gameswon").value = 1;
   } else {
+    alert("you have lost the game");
     document.getElementById("gameslost").value = 1;
   }
-  document.getElementById("gameform").submit();
-  //window.location.replace("/mainmenu");
+  if(checkCookie()){
+    document.getElementById("gameform").submit();
+  }else{
+    window.location.replace("/mainmenu");
+  }
 }
 
 function handleClick(clicked) {
@@ -210,7 +207,7 @@ function generate() {
     previous: {
       x: elem.width / 2,
       y: elem.height / 2,
-      radius: DIFFICULTY[diff].acceleration + 5,
+      radius: DIFFICULTY[diff].size + 5,
       dir: this.direction,
     }
   });
@@ -236,6 +233,14 @@ function deleteCookie(cname) {
   document.cookie = cname + "=expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
+function checkCookie() {
+  var username = getCookie("user");
+  if (username != "") {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 document.addEventListener('keydown', function (event) {
   if (event.keyCode == 32) {
