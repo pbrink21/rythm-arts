@@ -65,7 +65,9 @@ app.post('/users/login', (req, res) => {
     User.findOne({
         user_name: req.body.user_name
     }, (err, user) => {
+        console.log("DB INFO");
         console.log(user);
+        console.log("FORM INFO");
         console.log(newuser);
 
         if (err) {
@@ -77,6 +79,7 @@ app.post('/users/login', (req, res) => {
             return res.status(404).send({ message: "User does not exist" });
         }
         else if (user.user_pass == newuser.user_pass) {
+            console.log("USERNAME" + user.user_name);
             setCookie(user,res);
             res.redirect('/mainmenu');
         } else {
@@ -87,6 +90,7 @@ app.post('/users/login', (req, res) => {
 
 app.post('/users/stats', (req, res) => {
     const requser = new User(req.body);
+    console.log("POSTING STATS");
     console.log(requser);
     User.findOne({
         user_name: requser.user_name
@@ -138,7 +142,12 @@ app.get('/mainmenu', (req, res) => {
 });
 
 app.get('/highscore', (req, res) => {
-    res.render('high score page');
+    User.findOne({user_name: 'was'}, function(err, users){
+        console.log(users)
+        res.render('high score page', {          
+        users
+        })
+    })
 });
 
 app.get('/game', (req, res) => {
@@ -154,7 +163,7 @@ function setCookie(u,res) {
     var p = new Date();
     p.setTime(p.getTime() + (3 * 24 * 60 * 60 * 1000));
     var expires = "expires=" + p.toUTCString();
-    res.cookie('username', u.user_name, { expires: p});
+    res.cookie('user', u.user_name, { expires: p});
     res.cookie('points', u.points, {expires: p});
 
   }
