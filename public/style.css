@@ -432,14 +432,27 @@ left: 10%;
   font-size: 24;
   position: absolute;
   top: 70%;
-  left: 32.5%;
+  left: 30%;
   margin-right: -50%;
   height: 100px;
-  width: 35%;
+  width: 40%;
   border: 2px solid red;
 }
 
+a.hiHeader:visited{
+  color: white;
+  background-color: transparent;
+}
 
+a.hiHeader:link{
+  color: white;
+  background-color: transparent;
+}
+
+a.hiHeader:hover{
+  color: #ff66aa;
+  background-color: transparent;
+}
 
 .displayperks{
   right: 50%;
@@ -451,7 +464,7 @@ left: 10%;
 }
 
 .currentUser{
-  background-color: blue;
+  background-color: #ff66aa;
   padding: 10px;
   border: 2px solid floralwhite;
 }
