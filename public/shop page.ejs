@@ -68,14 +68,6 @@
     var user = getCookie("user");
     var points = getCookie("points");
 
-    function displayOwnedPerks(){
-      var saves = geCookie("saves");
-      //same for all others
-
-      document.getElementById("pargraph").innerHTML = "More Lives Level: " + saves;
-      //same for all others
-    }
-
     function buy(perk, level) {
       var button = document.getElementById(perk + level);
       var owned = getCookie(perk);
@@ -99,8 +91,8 @@
           document.cookie = "points=" + points + ";" + expires + "path=/";
         }
       }
-      document.cookie = "points=5000" + ";" + expires + "path=/";
-      document.cookie = perk + "=0" + ";" + expires + "path=/";
+      //document.cookie = "points=5000" + ";" + expires + "path=/";
+      //document.cookie = perk + "=0" + ";" + expires + "path=/";
     }
 
 
