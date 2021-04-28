@@ -150,7 +150,11 @@ app.get('/mainmenu', (req, res) => {
 
 app.get('/highscore', (req, res) => {
     User.find({}, function(err, users){
-        
+        users.sort(function(userA, userB){
+          var textA = userA.user_name.toUpperCase();
+          var textB = userB.user_name.toUpperCase();
+          return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        })
         console.log(users)
         res.render('high score page', {
         users:users, currUser
