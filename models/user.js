@@ -15,10 +15,6 @@ const userSchema = new Schema({
         type: Number,
         default: 0
     },
-    perks: {
-        type: [Boolean],
-        default: [false, false, false, false, false, false, false, false, false]
-    },
     circleshit: {
         type: Number,
         default: 0

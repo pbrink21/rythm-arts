@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Landing Page</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <script>
 
-    </script>
-
-    <body style="background-image: url('/images/logo_black.jpg');">
-        <div class= "login">
-            <x class="login-title" style="left: 38%">Login</x>
-            <form action = "/users/login" method = "POST">
-                <div class="login-header">
-                    <x style="padding-right: 10px">Username</x>
-                    <input id="user_name" name="user_name" placeholder="Enter Username" value="">
-                </div>
-                <div class="login-header">
-                    <x style="padding-right: 16px">Password</x>
-                    <input type="password" id="user_pass" name="user_pass" placeholder="Enter Password" value="">
-                </div>
-                <div style="position: relative; margin: 40px auto 20px;">
-                    <input type="submit" class="login-buttons" style="background-color: limegreen;" value="Confirm Login" >
-                    <x style="position: relative; left: 12px; bottom: 8px;">or</x>
-                    <input type="submit" class="login-buttons" style="background-color: limegreen;" value="Continue as Guest" formmethod = "GET" formaction="/mainmenu">
-                </div>
-                <div>
-                    <button class="login-buttons" style="background-color: limegreen; width: 88%;" formmethod = "GET" formaction="/signup">Signup</button>
-                </div>
-            </form>
-
-        </div>
-
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <script>
-  function setCookie() {
-  var p = new Date();
-  p.setTime(p.getTime() + (3 * 24 * 60 * 60 * 1000));
-  var expires = "expires=" + p.toUTCString();
-  document.cookie = "user=" + d + ";" + expires + "path=/";
-}
+
 </script>
 
-        <!--<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+<body style="background-image: url('/images/logo_black.jpg');">
+    <div class="login">
+        <x class="login-title" style="left: 38%">Login</x>
+        <form id="login-form" action="/users/login" method="POST">
+            <div class="login-header">
+                <x style="padding-right: 10px">Username</x>
+                <input id="user_name" name="user_name" placeholder="Enter Username" value="">
+            </div>
+            <div class="login-header">
+                <x style="padding-right: 16px">Password</x>
+                <input type="password" id="user_pass" name="user_pass" placeholder="Enter Password" value="">
+            </div>
+            <div style="position: relative; margin: 40px auto 20px;">
+                <input type="submit" class="login-buttons" style="background-color: limegreen;" value="Confirm Login">
+                <x style="position: relative; left: 12px; bottom: 8px;">or</x>
+                <input type="submit" class="login-buttons" style="background-color: limegreen;"
+                    value="Continue as Guest" formmethod="GET" formaction="/mainmenu">
+            </div>
+            <div>
+                <button class="login-buttons" style="background-color: limegreen; width: 88%;" formmethod="GET"
+                    formaction="/signup">Signup</button>
+            </div>
+        </form>
+
+    </div>
+
+    
+
+    <!--<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
         <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
         <script src="bundle.js"></script>-->
-    </body>
+</body>
+
 </html>

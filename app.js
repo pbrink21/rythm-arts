@@ -77,7 +77,7 @@ app.post('/users/login', (req, res) => {
             return res.status(404).send({ message: "User does not exist" });
         }
         else if (user.user_pass == newuser.user_pass) {
-            setCookie(user.user_name,res);
+            setCookie(user,res);
             res.redirect('/mainmenu');
         } else {
             return res.status(401).send({ message: "Wrong Password" });
@@ -91,6 +91,10 @@ app.post('/users/stats', (req, res) => {
     User.findOne({
         user_name: requser.user_name
     }, (err ,user) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
         User.updateOne({
             user_name: requser.user_name
         }, {
@@ -125,14 +129,17 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/shop', (req, res) => {
-  User.find()
-      .then((result) => {
-          res.render('shop page', {users: result});
-      })
-      .catch((err) => {
-          console.log('---All-USERS---');
-          console.log(err);
-      });
+       User.findOne({
+        user_name: req.body.user_name,
+    }, (err, user) => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log(user);
+            //res.render('shop page', {users: user.user_name});
+        }
+    });
 });
 
 app.get('/mainmenu', (req, res) => {
@@ -157,6 +164,8 @@ function setCookie(u,res) {
     var p = new Date();
     p.setTime(p.getTime() + (3 * 24 * 60 * 60 * 1000));
     var expires = "expires=" + p.toUTCString();
-    res.cookie('user', u, { expires: p});
+    res.cookie('username', u.user_name, { expires: p});
+    res.cookie('points', u.points, {expires: p});
+    
   }
   
