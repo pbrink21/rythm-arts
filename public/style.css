@@ -413,3 +413,12 @@ left: 10%;
   text-align: center;
 }
 
+.ownedperks{
+  position: absolute;
+  top: 70%;
+  left: 25%;
+  margin-right: -50%;
+  height: 100px;
+  width: 50%;
+  border: 2px solid red;
+}
