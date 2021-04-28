@@ -8,6 +8,8 @@ const app = express(); //server init
 //user: team1
 //pass: team1COMS
 const db_uri = 'mongodb+srv://team1:team1COMS@cluster0.o5usw.mongodb.net/RhythmArts?retryWrites=true&w=majority';
+var currUser = "";
+
 mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => console.log("Connected to the database!"), app.listen(3000))
     .catch((err) => console.log(err));
@@ -45,6 +47,7 @@ app.post('/users', (req, res) => {
             newuser.save()
                 .then((result) => {
                     setCookie(newuser, res);
+                    currUser = newuser.user_name;
                     res.redirect('/mainmenu');
                 })
                 .catch((err) => {
@@ -82,6 +85,7 @@ app.post('/users/login', (req, res) => {
         else if (user.user_pass == newuser.user_pass) {
             console.log("USERNAME" + user.user_name);
             setCookie(user, res);
+            currUser = newuser.user_name;
             res.redirect('/mainmenu');
         } else {
             return res.status(401).send({ message: "Wrong Password" });
@@ -118,6 +122,8 @@ app.post('/users/stats', (req, res) => {
         }
         );
     });
+    setCookie(user, res);
+    currUser = user.user_name;
     res.redirect('/mainmenu');
 });
 
@@ -126,6 +132,7 @@ app.post('/users/stats', (req, res) => {
 app.get('/', (req, res) => {
     console.log("enter root route");
     deleteCookie(res);
+    currUser = "";
     res.render('landing page');
 
 });
@@ -147,7 +154,7 @@ app.get('/highscore', (req, res) => {
     User.find({}, function(err, users){
         console.log(users)
         res.render('high score page', {
-        users:users
+        users:users, currUser
         })
     })
 });
