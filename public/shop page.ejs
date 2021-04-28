@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+  <script src="./src/details.js"></script>
 <head>
   <meta charset="UTF-8">
   <title>Shop</title>
@@ -18,14 +18,23 @@
     </div>
 
     <div>
-      <a class="accountbtn" href="/">Account</a>
+      <a class="accountbtn" href="/">Account</a>   
     </div>
+
+    <div class = "pointsdisplay">
+      <p id = pointsdisplay></p>
+    </div>
+
+    <div class = "usernamedisplay">
+      <p id = usernamedisplay></p>
+    </div>
+    
 
     <img src="/images/logo_cropped.png" width="300px" height="60px" class="ripoff">
 
   </div>
   <div class="shop">
-
+  <form>
     <div style="float:left">
       <button id="saves1" value="100" class="shop-item" onClick="buy('saves', 1)">More Saves 1</button>
       <button id="saves2" value="200" class="shop-item" onClick="buy('saves', 2)">More Saves 2</button>
@@ -43,38 +52,21 @@
       <button id="ball2" value="200" class="shop-item" onClick="buy('ball', 2)">Larger Balls 2</button>
       <button id="ball3" value="400" class="shop-item" onClick="buy('ball', 3)">Larger Balls 3</button>
     </div>
+  </form>
+
+
+  
+  </div>
+  <div class="ownedperks"> 
+    <p id="numsaves" class="displayperks"></p>
+    <p id="numslows" class="displayperks"></p>
+    <p id="numballs" class="displayperks"></p>
   </div>
   
 
-
   <script>
-    function getCookie(cname) {
-      var name = cname + "=";
-      var decodedCookie = decodeURIComponent(document.cookie);
-      var ca = decodedCookie.split(';');
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-          c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-      return "";
-    }
-
-
     var user = getCookie("user");
     var points = getCookie("points");
-
-    function displayOwnedPerks(){
-      var saves = geCookie("saves");
-      //same for all others
-
-      document.getElementById("pargraph").innerHTML = "More Lives Level: " + saves;
-      //same for all others
-    }
 
     function buy(perk, level) {
       var button = document.getElementById(perk + level);
@@ -95,11 +87,9 @@
           document.cookie = "points=" + points + ";" + expires + "path=/";
         }
       }
-      //document.cookie = "points=10000" + ";" + expires + "path=/";
+      //document.cookie = "points=5000" + ";" + expires + "path=/";
       //document.cookie = perk + "=0" + ";" + expires + "path=/";
     }
-
-
   </script>
 </body>
 
