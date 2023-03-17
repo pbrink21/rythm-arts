@@ -1,76 +1,80 @@
 <!DOCTYPE html>
 <html>
-
+<script src="./src/details.js"></script>
 <head>
   <meta charset="UTF-8">
   <title>Account</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="mainbackground">
+<body class="leaderboardBackground">
   <div id="menu bar" class="topnav">
-    <div class="topnav-centered">
-      <ul>
-        <li><a class="navButton" href="main menu.html">Game</a></li>
-        <li><a class="navButton" href="high score page.html">Hi-Score</a></li>
-        <li><a class="navButton" href="shop page.html">Shop</a></li>
-      </ul>
+    <img src="/images/logo_cropped.png" width="300px" height="60px" class="ripoff">
+    <div class="center-menu">
+      <a class="navButton" href="/mainmenu">Game</a>
+      <a class="navButton" href="/highscore">Hi-Score</a>
+      <a class="navButton" href="/shop">Shop</a>
     </div>
-    <img src="../images/logo_cropped.png" width="300px" height="60px" class="ripoff">
 
-    <div class="dropdown">
-      <a class="topnav-right, active" href="account page.html">Account</a>
+    <div class="pointsdisplay">
+      <div style="width: 200px; margin-top: 5px;">
+        <p id = pointsdisplay></p>
+        <p id = usernamedisplay></p>
+      </div>
+      <a class="navButton" href="/">Logout</a>
     </div>
   </div>
 
   <div class="container">
     <form>
       <div class="row">
-        <div class="col-25">
+        <div class="col-25" style="display: flex; flex-direction: row-reverse">
           <label class="actLbl" for="uname">Username</label>
         </div>
-        <div class="col-75">
-          <input class="acctTxt" type="text" id="uname" name="username" placeholder="Username..">
+        <div class="col-50">
+          <input class="acctTxt" type="text" id="uname" name="username" placeholder="Username...">
         </div>
       </div>
       <div class="row">
-        <div class="col-25">
-          <label for="dname">Display name</label>
+        <div class="col-25" style="display: flex; flex-direction: row-reverse">
+          <label class="actLbl" for="dname">Display name</label>
         </div>
-        <div class="col-75">
-          <input class="acctTxt" type="text" id="dname" name="displayname" placeholder="Display name..">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-          <label for="pass">Password Change</label>
-        </div>
-        <div class="col-75">
-          <input class="acctTxt" type="password" id="password" name="password" placeholder="Enter Password"
-            onkeyup="check()">
-          <input class="acctTxt" style="position: relative; left: 30%;" type="password" id="confirm_password"
-            name="confirm_password" placeholder="Confirm Password" onkeyup="check()">
-          <x style="position: relative; left: 40%; top:10px;" id="message"></x>
+        <div class="col-50">
+          <input class="acctTxt" type="text" id="dname" name="displayname" placeholder="Display name...">
         </div>
       </div>
       <div class="row">
-        <div class="col-25">
-          <label for="desc">Account Description</label>
+        <div class="col-25" style="display: flex; flex-direction: row-reverse">
+          <label class="actLbl" for="pass">Password Change</label>
         </div>
-        <div class="col-75">
+        <div class="col-50">
+          <div style="display: flex; flex-direction: column">
+            <input class="acctTxt" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;" type="password" id="password" name="password" placeholder="Enter Password"
+                   onkeyup="check()">
+            <input class="acctTxt" style="border-top-left-radius: 0px; border-top-right-radius: 0px;" type="password" id="confirm_password"
+                   name="confirm_password" placeholder="Confirm Password" onkeyup="check()">
+            <x id="message"></x>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25" style="display: flex; flex-direction: row-reverse">
+          <label class="actLbl" for="desc">Account Description</label>
+        </div>
+        <div class="col-50">
           <textarea class="acctTxt" id="desc" name="description" placeholder="Write something.."
             style="height:200px"></textarea>
         </div>
       </div>
       <div class="row">
         <div class="col-25">
-          <button class="logout" onClick="logout()">Logout</button>
         </div>
         <input class="acctSub" type="submit" value="Save" onClick="submit">
+        <button class="logout" style="margin-left: 20px; background-color: gray" onClick="logout()">Logout</button>
       </div>
     </form>
   </div>
-  <div id="game bar" class="bottombar"></div>
+
   <script>
     function check() {
       if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
@@ -83,11 +87,11 @@
     }
 
     function logout() {
-
+//TODO: Implement
     }
 
     function submit() {
-
+//TODO: Implement
     }
   </script>
 </body>

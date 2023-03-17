@@ -10,27 +10,22 @@
 
 <body class="levelBackground">
   <div id="menu bar" class="topnav">
-    <div class="topnav-centered">
-      <ul>
-        <li><a class="active" href="/mainmenu">Game</a></li>
-        <li><a class="navButton" href="/highscore">Hi-Score</a></li>
-        <li><a class="navButton" href="/shop">Shop</a></li>
-      </ul>
-    </div>
-    <div>
-      <a class="accountbtn" href="/">Logout</a>
-    </div>
-
-    <div class = "pointsdisplay">
-      <p id = pointsdisplay></p>
-    </div>
-
-    <div class = "usernamedisplay">
-      <p id = usernamedisplay></p>
-    </div>
     <img src="/images/logo_cropped.png" width="300px" height="60px" class="ripoff">
+    <div class="center-menu">
+      <a class="navButton active" href="/mainmenu">Game</a>
+      <a class="navButton" href="/highscore">Hi-Score</a>
+      <a class="navButton" href="/shop">Shop</a>
+    </div>
 
+    <div class="pointsdisplay">
+      <div style="width: 200px; margin-top: 5px;">
+        <p id = pointsdisplay></p>
+        <p id = usernamedisplay></p>
+      </div>
+      <a class="navButton" href="/">Logout</a>
+    </div>
   </div>
+
   <div id="game" class="gamediv">
     <canvas id="gameCanvas" width="750" height="750" style="border:1px solid #000000;" />
     <form id="gameform" action="/users/stats" method="POST">

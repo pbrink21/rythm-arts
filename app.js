@@ -227,6 +227,9 @@ app.get('/highscore', (req, res) => {
 app.get('/game', (req, res) => {
     res.render('game page');
 });
+app.get('/account', (req, res) => {
+    res.render('account page');
+});
 
 app.get('/board', (req, res) => {
     res.render('board');

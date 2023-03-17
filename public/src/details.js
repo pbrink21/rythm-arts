@@ -13,7 +13,8 @@ function displayOwnedPerks(){
     document.getElementById("numslows").innerHTML = "Slows Level: " + slows;
     document.getElementById("numballs").innerHTML = "Balls Level: " + balls;
     document.getElementById("pointsdisplay").innerHTML = "Points: " + points;
-    document.getElementById("usernamedisplay").innerHTML = "User: " + user;//TODO: Add link to account page
+    document.getElementById("usernamedisplay").innerHTML = "User: " +
+        "<a href='/account'>" + user + "</a>";//TODO: Add link to account page
   }
 
   function getCookie(cname) {

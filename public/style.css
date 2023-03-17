@@ -14,12 +14,15 @@ color: white;
 
 
 .row {
-top: 400px;
-position: relative;
-display: block;
-width: 100%;
-height: 40px;
-border-bottom: 1px solid #AFAFAF;
+/*top: 400px;*/
+/*position: relative;*/
+/*display: block;*/
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+/*width: 100%;*/
+/*height: 40px;*/
+/*border-bottom: 1px solid #AFAFAF;*/
 }
 
 
@@ -153,14 +156,23 @@ border: red 2px solid;
   justify-content: space-between;
 }
 
-.topnav a {
-/*float: left;*/
-color: white;
-background-color: hotpink;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-font-size: 30px;
+/*.topnav a {*/
+/*!*float: left;*!*/
+/*color: white;*/
+/*background-color: hotpink;*/
+/*text-align: center;*/
+/*padding: 14px 16px;*/
+/*text-decoration: none;*/
+/*font-size: 30px;*/
+/*}*/
+
+.topnav .navButton {
+  color: white;
+  background-color: hotpink;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 30px;
 }
 
 .topnav a:hover, .dropdown:hover .account {
@@ -219,11 +231,14 @@ resize: vertical;
 .actLbl {
 padding: 12px 12px 12px 0;
 display: inline-block;
+  text-align: right;
+  color: white;
+  font-weight: bold;
 }
 
 /* Style the submit button */
 .acctSub {
-background-color: #4CAF50;
+background-color: limegreen;
 color: white;
 padding: 12px 20px;
 border: none;
@@ -246,7 +261,10 @@ float: left;
 /* Style the container */
 .container {
 border-radius: 5px;
-background-color: #f2f2f2;
+/*background-color: #f2f2f2;*/
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 padding: 20px;
 }
 
@@ -262,6 +280,12 @@ margin-top: 6px;
 float: left;
 width: 75%;
 margin-top: 6px;
+}
+
+.col-50 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
 }
 
 /* Clear floats after the columns */
