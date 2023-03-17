@@ -7,7 +7,7 @@ const app = express(); //server init
 //database init
 //user: team1
 //pass: team1COMS
-const db_uri = 'mongodb+srv://team1:team1COMS@cluster0.o5usw.mongodb.net/RhythmArts?retryWrites=true&w=majority';
+const db_uri = 'mongodb+srv://team1:team1COMS@cluster0.e3otfxs.mongodb.net/?retryWrites=true&w=majority';
 var currUser = "";
 
 mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -231,7 +231,7 @@ app.get('/game', (req, res) => {
 app.get('/board', (req, res) => {
     res.render('board');
 });
-
+console.log("Started successfully")
 
 function setCookie(u, res) {
     var p = new Date();

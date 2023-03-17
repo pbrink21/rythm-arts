@@ -92,26 +92,11 @@ background-size: cover;
 background-repeat: no-repeat;
 }
 
-.accountbtn{
-  position: absolute;
-  top: -1px;
-  right: 25%;
-}
-
-.pointsdisplay{
-  color: floralwhite;
-  font-size: 24px;
-  position: absolute;
-  top: -7px;
-  left: 77%;
-  right: 5%;
-}
-
 .usernamedisplay{
   color: floralwhite;
   font-size: 24px;
   position: absolute;
-  top: -7px;
+  top: 14px;
   left: 85%;
   right: 5%;
 }
@@ -160,14 +145,18 @@ border: red 2px solid;
 
 .topnav{
   overflow: hidden;
+  width: 100%;
   background: #bf1f66;
-  position: relative;
+  /*position: relative;*/
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .topnav a {
-float: left;
-color: #f2f2f2;
-background-color: #ff66aa;
+/*float: left;*/
+color: white;
+background-color: hotpink;
 text-align: center;
 padding: 14px 16px;
 text-decoration: none;
@@ -180,8 +169,40 @@ color: black;
 }
 
 .topnav a.active {
-background-color: #4CAF50;
+background-color: limegreen;
 color: white;
+}
+
+/*.topnav-centered ul {*/
+/*  display: inline;*/
+/*  list-style-type: none;*/
+/*  position: absolute;*/
+/*  !*top: 50%;*!*/
+/*  !*left: 50%;*!*/
+/*  !*transform: translate(-50%, -50%);*!*/
+/*  margin:0;*/
+/*}*/
+/*.topnav-centered li {*/
+/*  float: left;*/
+/*}*/
+/*.topnav-centered a {*/
+/*  display: block;*/
+/*}*/
+
+/*.accountbtn{*/
+/*  !*position: absolute;*!*/
+/*  !*top: -1px;*!*/
+/*  !*right: 25%;*!*/
+/*}*/
+
+.pointsdisplay{
+  display: inline-flex;
+  color: floralwhite;
+  font-size: 24px;
+  width: 300px;
+}
+.center-menu{
+  display: inline-flex;
 }
 
 /* Style inputs, select elements and textareas */
@@ -256,22 +277,6 @@ clear: both;
  width: 100%;
  margin-top: 0;
 }
-} 
-
-.topnav-centered ul {
-display: inline;
-list-style-type: none;
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-margin:0;
-}
-.topnav-centered li {
-float: left;
-}
-.topnav-centered a {
-display: block;
 }
 
 .bottombar{
@@ -284,7 +289,7 @@ width: 100%;
 padding: 20px;
 }
 .ripoff{
-float: left;
+/*float: left;*/
 padding: 0;
 padding-left: 10px;
 margin: 0;
@@ -379,32 +384,48 @@ transform: translate(-50%, -50%);
 width: 300px;
 height: 250px;
 padding: 10px;
-background-color: white;
+background-color: #bf1f66;
+  border-radius: 10px;
 }
 
 .login-title{
 position: relative;
 font-size: xx-large;
+  color: white;
+  font-weight: bold;
 }
 
 .login-header{
 position: relative;
-margin: 25px 10px 0px;
+margin: 10px;
+}
+
+.login_input{
+  border:0;
+  border-bottom: 2px solid limegreen;
+  color: white;
+  width: 100%;
+  height: 35px;
+  padding: 20px 5px 5px;
+  font-size: 15px;
+  background-color: #bf1f66;
 }
 
 .login-buttons{
 position: relative;
-left: 10px;
-top: -10px;
-padding: 5px;
-margin: 0px 10px;
+padding: 10px;
+  margin: 5px;
+  color: white;
+  background-color: limegreen;
+  border-width: 0;
+  border-radius: 5px;
+}
+.login-button-box{
+  margin: 10px;
 }
 
 .signup-button{
-position: relative;
-padding: 5px;
-width: 80%;
-left: 10%;
+width: 98%;
 }
 
 .shop{
