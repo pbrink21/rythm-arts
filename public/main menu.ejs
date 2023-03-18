@@ -27,20 +27,28 @@
   </div>
 
   <div id="game bar" class="bottombar">
-    <div class="gameSetting">
+    <div>
       <form id="gameSet">
-        <select name="difficulty" id = "d">
-          <option value="0">Easy</option>
-          <option value="1">Medium</option>
-          <option value="2">Hard</option>
-        </select>
-        <select name="theme" id = "t">
-          <option value="Default">Default</option>
-          <option value="Dawn Winery">Dawn Winery</option>
-          <option value="Hotto Dogu">Hotto Dogu</option>
-          <option value="Umbrella">Umbrella</option>
-        </select>
-        <input class="play" type="button" value="Play!" onClick="setCookie()">
+        <div class="gameSettings">
+          <div>
+            <label class="gameSettingLabel" for="d">Difficulty:</label>
+            <select class="gameSetting" name="difficulty" id = "d">
+              <option value="0">Easy</option>
+              <option value="1">Medium</option>
+              <option value="2">Hard</option>
+            </select>
+          </div>
+          <div>
+            <label class="gameSettingLabel" for="t">Theme:</label>
+            <select class="gameSetting" name="theme" id = "t">
+              <option value="Default">Default</option>
+              <option value="Dawn Winery">Dawn Winery</option>
+              <option value="Hotto Dogu">Hotto Dogu</option>
+              <option value="Umbrella">Umbrella</option>
+            </select>
+          </div>
+          <input class="play" type="button" value="Play!" onClick="setCookie()">
+        </div>
       </form>
     </div>
   </div>
