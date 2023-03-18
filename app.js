@@ -1,13 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const User = require('./models/user'); //model init
+const dotenv = require('dotenv').config();
+
 
 const app = express(); //server init
 
-//database init
-//user: team1
-//pass: team1COMS
-const db_uri = 'mongodb+srv://team1:team1COMS@cluster0.e3otfxs.mongodb.net/?retryWrites=true&w=majority';
+const db_uri = process.env.DATABASE;
 var currUser = "";
 
 mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true })
