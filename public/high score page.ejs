@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Hi-Score</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/style.css">
     </head>
     <body class="leaderboardBackground">
 	<div id="menu bar" class="topnav">
@@ -23,251 +23,274 @@
 			<a class="navButton" href="/">Logout</a>
 		</div>
 	</div>
-<!--
-      <%users.forEach(users => {%>
-      <div id = "container">
-        <div class = "leaderboard">Username: <%= users.user_name %></div>
-        <div class = "leaderboard">Player Points: <%= users.points %></div>
-        <div class = "leaderboard">Circles Hit: <%= users.circleshit %></div>
-        <div class = "leaderboard">Circles Missed: <%= users.circlesmiss %></div>
-        <div class = "leaderboard">Games Won: <%= users.gameswon %></div>
-      </div>
-      <%})%>
-      -->
+
+	<table>
+		<tr id = "container">
+			<th class = "leaderboard"> <a class="hiHeader" href = "/highscore">Username</a></th>
+			<th class = "leaderboard"> <a class="hiHeader" href = "/sort/Points">Player Points</a></th>
+			<th class = "leaderboard"> <a class="hiHeader" href = "/sort/Hits">Circles Hit</a></th>
+			<th class = "leaderboard"> <a class="hiHeader" href = "/sort/Misses">Circles Missed</a></th>
+			<th class = "leaderboard"> <a class="hiHeader" href = "/sort/Wins">Games Won</a></th>
+			<th class = "leaderboard"> <a class="hiHeader" href = "/sort/Ratio">W/L Ratio</a></th>
+		</tr>
+
+		<%users.forEach(users => {%>
+			<tr id = "container" <% if(users.user_name == currUser) {%> class = "currentUser" <% } %>>
+				<td class = "leaderboard"><%= users.user_name %></td>
+				<td class = "leaderboard"><%= users.points %></td>
+				<td class = "leaderboard"><%= users.circleshit %></td>
+				<td class = "leaderboard"><%= users.circlesmiss %></td>
+				<td class = "leaderboard"><%= users.gameswon %></td>
+				<td class = "leaderboard"><%= parseFloat(users.gameswon / (users.gameslost>0 ? users.gameslost : 1)).toFixed(2) %></td>
+			</tr>
+		<%})%>
+	</table>
+
+	<!--
+          <%users.forEach(users => {%>
+          <div id = "container">
+            <div class = "leaderboard">Username: <%= users.user_name %></div>
+            <div class = "leaderboard">Player Points: <%= users.points %></div>
+            <div class = "leaderboard">Circles Hit: <%= users.circleshit %></div>
+            <div class = "leaderboard">Circles Missed: <%= users.circlesmiss %></div>
+            <div class = "leaderboard">Games Won: <%= users.gameswon %></div>
+          </div>
+          <%})%>
+          -->
 <!--<div id="game bar" class= "bottombar"></div>-->
 
-<div class="wrapper">
-	<div class="lboard_section">
-		<div class="lboard_tabs">
-			<div class="tabs">
-				<ul>
-					<li data-li="today">Easy</li>
-					<li class="active" data-li="month">Normal</li>
-					<li data-li="year">Hard</li>
-				</ul>
-			</div>
-		</div>
+<!--<div class="wrapper">-->
+<!--	<div class="lboard_section">-->
+<!--		<div class="lboard_tabs">-->
+<!--			<div class="tabs">-->
+<!--				<ul>-->
+<!--					<li data-li="today">Easy</li>-->
+<!--					<li class="active" data-li="month">Normal</li>-->
+<!--					<li data-li="year">Hard</li>-->
+<!--				</ul>-->
+<!--			</div>-->
+<!--		</div>-->
 
-		<div class="lboard_wrap">
-			<div class="lboard_item today" style="display: none;">
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_1.png" alt="picture_1">
-					</div>
-					<div class="name_bar">
-						<p><span>1.</span>Paul</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 95%"></div>
-						</div>
-					</div>
-					<div class="points">
-						195 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_2.png" alt="picture_2">
-					</div>
-					<div class="name_bar">
-						<p><span>2.</span>William</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 80%"></div>
-						</div>
-					</div>
-					<div class="points">
-						185 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_3.png" alt="picture_2">
-					</div>
-					<div class="name_bar">
-						<p><span>3.</span>Beatrice</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 60%;"></div>
-						</div>
-					</div>
-					<div class="points">
-						160 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_4.png" alt="picture_1">
-					</div>
-					<div class="name_bar">
-						<p><span>4.</span>?</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 30%"></div>
-						</div>
-					</div>
-					<div class="points">
-						130 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_5.png" alt="picture_2">
-					</div>
-					<div class="name_bar">
-						<p><span>5.</span>Brett</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 10%"></div>
-						</div>
-					</div>
-					<div class="points">
-						110 points
-					</div>
-				</div>
-			</div>
-			<div class="lboard_item month" style="display: block;">
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_2.png" alt="picture_2">
-					</div>
-					<div class="name_bar">
-						<p><span>1.</span>William</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 95%"></div>
-						</div>
-					</div>
-					<div class="points">
-						1195 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_3.png" alt="picture_3">
-					</div>
-					<div class="name_bar">
-						<p><span>2.</span>Beatrice</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 80%"></div>
-						</div>
-					</div>
-					<div class="points">
-						1185 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_1.png" alt="picture_1">
-					</div>
-					<div class="name_bar">
-						<p><span>3.</span>Paul</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 70%;"></div>
-						</div>
-					</div>
-					<div class="points">
-						1160 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_5.png" alt="picture_5">
-					</div>
-					<div class="name_bar">
-						<p><span>4.</span>Brett</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 50%"></div>
-						</div>
-					</div>
-					<div class="points">
-						1130 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_4.png" alt="picture_4">
-					</div>
-					<div class="name_bar">
-						<p><span>5.</span>?</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 30%"></div>
-						</div>
-					</div>
-					<div class="points">
-						1110 points
-					</div>
-				</div>
-			</div>
-			<div class="lboard_item year" style="display: none;">
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_5.png" alt="picture_5">
-					</div>
-					<div class="name_bar">
-						<p><span>1.</span>Brett</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 90%"></div>
-						</div>
-					</div>
-					<div class="points">
-						2195 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_4.png" alt="picture_4">
-					</div>
-					<div class="name_bar">
-						<p><span>2.</span>?</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 85%"></div>
-						</div>
-					</div>
-					<div class="points">
-						2185 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_3.png" alt="picture_3">
-					</div>
-					<div class="name_bar">
-						<p><span>3.</span>Beatrice</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 65%;"></div>
-						</div>
-					</div>
-					<div class="points">
-						2160 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_1.png" alt="picture_1">
-					</div>
-					<div class="name_bar">
-						<p><span>4.</span>Paul</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 30%"></div>
-						</div>
-					</div>
-					<div class="points">
-						2130 points
-					</div>
-				</div>
-				<div class="lboard_mem">
-					<div class="img">
-						<img src="./images/pic_2.png" alt="picture_2">
-					</div>
-					<div class="name_bar">
-						<p><span>5.</span>William</p>
-						<div class="bar_wrap">
-							<div class="inner_bar" style="width: 10%"></div>
-						</div>
-					</div>
-					<div class="points">
-						2110 points
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<!--		<div class="lboard_wrap">-->
+<!--			<div class="lboard_item today" style="display: none;">-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_1.png" alt="picture_1">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>1.</span>Paul</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 95%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						195 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_2.png" alt="picture_2">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>2.</span>William</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 80%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						185 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_3.png" alt="picture_2">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>3.</span>Beatrice</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 60%;"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						160 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_4.png" alt="picture_1">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>4.</span>?</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 30%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						130 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_5.png" alt="picture_2">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>5.</span>Brett</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 10%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						110 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class="lboard_item month" style="display: block;">-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_2.png" alt="picture_2">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>1.</span>William</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 95%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						1195 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_3.png" alt="picture_3">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>2.</span>Beatrice</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 80%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						1185 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_1.png" alt="picture_1">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>3.</span>Paul</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 70%;"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						1160 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_5.png" alt="picture_5">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>4.</span>Brett</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 50%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						1130 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_4.png" alt="picture_4">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>5.</span>?</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 30%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						1110 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class="lboard_item year" style="display: none;">-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_5.png" alt="picture_5">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>1.</span>Brett</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 90%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						2195 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_4.png" alt="picture_4">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>2.</span>?</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 85%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						2185 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_3.png" alt="picture_3">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>3.</span>Beatrice</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 65%;"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						2160 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_1.png" alt="picture_1">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>4.</span>Paul</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 30%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						2130 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="lboard_mem">-->
+<!--					<div class="img">-->
+<!--						<img src="./images/pic_2.png" alt="picture_2">-->
+<!--					</div>-->
+<!--					<div class="name_bar">-->
+<!--						<p><span>5.</span>William</p>-->
+<!--						<div class="bar_wrap">-->
+<!--							<div class="inner_bar" style="width: 10%"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="points">-->
+<!--						2110 points-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->
 
       <audio id="audio" src="..sounds\otherPagesMusic.mp3"></audio>
 

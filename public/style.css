@@ -486,8 +486,7 @@ width: 98%;
 
 .leaderboard{
   padding: 10px;
-  margin: auto;
-  display: inline-block;
+  /*display: inline-block;*/
   border: 2px solid floralwhite;
 }
 
@@ -649,4 +648,8 @@ width: 98%;
   font-size: 30px;
   color: white;
   padding: 10px 50px;
+}
+
+.hiHeader{
+  color: floralwhite;
 }
