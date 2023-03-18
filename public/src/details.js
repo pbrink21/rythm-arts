@@ -9,9 +9,9 @@ function displayOwnedPerks(){
     var slows = getCookie("time");
     var balls = getCookie("ball");
 
-    document.getElementById("numsaves").innerHTML = "More Saves Level: " + saves;
-    document.getElementById("numslows").innerHTML = "Slows Level: " + slows;
-    document.getElementById("numballs").innerHTML = "Balls Level: " + balls;
+    document.getElementById("numsaves").innerHTML = "More Saves Level: " + (saves == "" ? 0 : saves);
+    document.getElementById("numslows").innerHTML = "Slows Level: " + (slows == "" ? 0 : slows);
+    document.getElementById("numballs").innerHTML = "Balls Level: " + (balls == "" ? 0 : balls);
     document.getElementById("pointsdisplay").innerHTML = "Points: " + points;
     document.getElementById("usernamedisplay").innerHTML = "User: " +
         "<a href='/account'>" + user + "</a>";//TODO: Add link to account page
